@@ -12,13 +12,15 @@ import UIKit
 class Movie: Item {
     
     var name: String
+    var author: String
     var picture: UIImage? = nil
-    var pictureName: String?
+    var year: Int? = nil
     
-    init(name: String, picture: UIImage? = nil, pictureName: String? = nil) {
+    init(name: String, author: String, picture: UIImage? = nil, year: Int? = nil) {
         self.name = name
+        self.author = author
         self.picture = picture
-        self.pictureName = pictureName
+        self.year = year
     }
     
 }

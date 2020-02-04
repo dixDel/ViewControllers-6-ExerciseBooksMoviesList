@@ -12,8 +12,10 @@ class MoviesViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     
-    private let movies = [
-        Movie(name: "Blanche-Neige et les septs mains", picture: #imageLiteral(resourceName: "Blanche-Neige"), pictureName: "Blanche-Neige")
+    private var movies = [
+        Movie(name: "Blanche-Neige et les septs mains", author: "Waf Dixney", picture: #imageLiteral(resourceName: "Blanche-Neige")),
+        Movie(name: "Gattaca", author: "Andrew Niccol", picture: #imageLiteral(resourceName: "Gattaca"), year: 1997),
+        Movie(name: "Fight Club", author: "David Fincher", picture: #imageLiteral(resourceName: "fight club"), year: 1999)
     ]
     
     override func viewDidLoad() {
@@ -23,6 +25,10 @@ class MoviesViewController: UIViewController {
         self.navigationItem.title = "Films"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
         self.navigationItem.rightBarButtonItem = addButton
+        
+        self.movies.sort { (movie1, movie2) -> Bool in
+            movie1.name < movie2.name
+        }
         
         setupTableView()
     }

@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-oa-cp9">
-                        <rect key="frame" x="0.0" y="0.0" width="120" height="178"/>
+                        <rect key="frame" x="0.0" y="5" width="120" height="168"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="u5K-Ty-5Ja"/>
                         </constraints>
@@ -30,9 +30,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="bFy-oa-cp9" secondAttribute="bottom" id="7pD-Z9-aCE"/>
+                    <constraint firstAttribute="bottom" secondItem="bFy-oa-cp9" secondAttribute="bottom" constant="5" id="7pD-Z9-aCE"/>
                     <constraint firstItem="bFy-oa-cp9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vpk-d6-kJ3"/>
-                    <constraint firstItem="bFy-oa-cp9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jV7-n4-V8h"/>
+                    <constraint firstItem="bFy-oa-cp9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="jV7-n4-V8h"/>
                     <constraint firstItem="sKJ-Pf-vqZ" firstAttribute="leading" secondItem="bFy-oa-cp9" secondAttribute="trailing" constant="10" id="jkT-99-Ter"/>
                     <constraint firstAttribute="trailing" secondItem="sKJ-Pf-vqZ" secondAttribute="trailing" constant="10" id="uE8-DK-Keo"/>
                     <constraint firstItem="sKJ-Pf-vqZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xwz-JL-uWO"/>
