@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 class Movie {
     
     var name: String
+    var picture: UIImage? = nil
+    var pictureName: String?
     
-    init(name: String) {
+    init(name: String, picture: UIImage? = nil, pictureName: String? = nil) {
         self.name = name
+        self.picture = picture
+        self.pictureName = pictureName
     }
     
 }

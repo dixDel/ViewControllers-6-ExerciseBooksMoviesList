@@ -11,6 +11,7 @@ import UIKit
 class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var pictureImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,10 @@ class MovieTableViewCell: UITableViewCell {
     
     func setupCell(movie: Movie) {
         self.nameLabel.text = movie.name
+        if let picture = movie.picture {
+            self.pictureImageView.image = picture
+            self.pictureImageView.contentMode = .scaleAspectFit
+        }
     }
     
 }

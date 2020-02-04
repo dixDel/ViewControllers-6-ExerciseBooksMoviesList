@@ -13,7 +13,7 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var movieTableView: UITableView!
     
     private let movies = [
-        Movie(name: "SCathy Movie")
+        Movie(name: "Blanche-Neige et les septs mains", picture: #imageLiteral(resourceName: "Blanche-Neige"), pictureName: "Blanche-Neige")
     ]
     
     override func viewDidLoad() {
@@ -42,5 +42,8 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
     
 }
