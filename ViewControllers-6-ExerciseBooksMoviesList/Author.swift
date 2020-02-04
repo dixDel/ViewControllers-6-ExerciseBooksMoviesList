@@ -1,5 +1,5 @@
 //
-//  Book.swift
+//  Author.swift
 //  ViewControllers-6-ExerciseBooksMoviesList
 //
 //  Created by student5310 on 04/02/2020.
@@ -9,15 +9,12 @@
 import Foundation
 import UIKit
 
-class Book: Item {
-    
+class Author: Item {
     var name: String
-    var author: String
     var picture: UIImage?
     
-    init(title: String, picture: UIImage? = nil, author: String) {
-        self.name = title
+    init(name: String, picture: UIImage?) {
+        self.name = name
         self.picture = picture
-        self.author = author
     }
 }

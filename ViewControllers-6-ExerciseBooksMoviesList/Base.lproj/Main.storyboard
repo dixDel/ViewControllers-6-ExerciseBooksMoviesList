@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Authors View Controller-->
         <scene sceneID="qbn-Fy-rs8">
             <objects>
-                <viewController id="Aed-y9-3Mt" sceneMemberID="viewController">
+                <viewController id="Aed-y9-3Mt" customClass="AuthorsViewController" customModule="ViewControllers_6_ExerciseBooksMoviesList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xVz-TC-H6e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,6 +30,9 @@
                         <viewLayoutGuide key="safeArea" id="qfV-09-pfM"/>
                     </view>
                     <navigationItem key="navigationItem" id="uf6-mZ-FYv"/>
+                    <connections>
+                        <outlet property="authorsTableView" destination="R9f-HR-v5H" id="hZM-3j-du2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tl9-Ra-4SI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,34 +119,37 @@
             </objects>
             <point key="canvasLocation" x="308.69565217391306" y="-1305.1339285714284"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="XNc-Xd-1v8">
+        <!--Add Item View Controller-->
+        <scene sceneID="D1V-d2-dIU">
             <objects>
-                <tableViewController id="Jim-de-n7t" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Mr-F9-QrI">
+                <viewController storyboardIdentifier="AddItemViewController" id="Y8U-Ry-qVr" customClass="AddItemViewController" customModule="ViewControllers_6_ExerciseBooksMoviesList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sDf-cc-Usg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZm-5S-oOf">
+                                <rect key="frame" x="10" y="812" width="394" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="Y8U-Ry-qVr" eventType="touchUpInside" id="Yte-GI-DxR"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ipe-b3-BhK">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ipe-b3-BhK" id="JJM-VF-j3r">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Jim-de-n7t" id="Hh7-zy-Shp"/>
-                            <outlet property="delegate" destination="Jim-de-n7t" id="lcM-T2-yMf"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="zt1-Re-yAU"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ya-4y-hVJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="iI1-g1-gdF" firstAttribute="bottom" secondItem="tZm-5S-oOf" secondAttribute="bottom" constant="20" id="4k6-mV-Emc"/>
+                            <constraint firstItem="iI1-g1-gdF" firstAttribute="trailing" secondItem="tZm-5S-oOf" secondAttribute="trailing" constant="10" id="OHN-Uu-JvO"/>
+                            <constraint firstItem="tZm-5S-oOf" firstAttribute="leading" secondItem="iI1-g1-gdF" secondAttribute="leading" constant="10" id="ZMX-Ml-rk3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iI1-g1-gdF"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="tZm-5S-oOf" id="crD-fT-eTC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsQ-Eq-rMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139" y="-1305"/>
+            <point key="canvasLocation" x="1471" y="-2091"/>
         </scene>
         <!--Films-->
         <scene sceneID="di4-ed-IXd">

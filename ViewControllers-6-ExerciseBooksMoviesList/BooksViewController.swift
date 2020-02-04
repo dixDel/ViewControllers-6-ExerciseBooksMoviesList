@@ -12,12 +12,14 @@ class BooksViewController: UIViewController {
     @IBOutlet weak var booksTableView: UITableView!
     
     private let books = [
-        Book(title: "Fondation", author: "Isaac Asimov")
+        Book(title: "Fondation", picture: #imageLiteral(resourceName: "Fondation-Asimov"), author: "Isaac Asimov")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.title = "Livres"
         
         setupTableView()
     }

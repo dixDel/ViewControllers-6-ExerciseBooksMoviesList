@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AuthorsViewController.swift
 //  ViewControllers-6-ExerciseBooksMoviesList
 //
 //  Created by student5310 on 04/02/2020.
@@ -8,29 +8,29 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController {
+class AuthorsViewController: UIViewController {
 
-    @IBOutlet weak var movieTableView: UITableView!
+    @IBOutlet weak var authorsTableView: UITableView!
     
-    private let movies = [
-        Movie(name: "Blanche-Neige et les septs mains", picture: #imageLiteral(resourceName: "Blanche-Neige"), pictureName: "Blanche-Neige")
+    private let authors = [
+        Author(name: "Isaac Asimov", picture: nil),
+        Author(name: "Waf Dixney", picture: nil)
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
         
-        self.navigationItem.title = "Films"
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
-        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.title = "Auteurs"
         
         setupTableView()
     }
-
+    
     func setupTableView() {
-        self.movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
-        self.movieTableView.delegate = self
-        self.movieTableView.dataSource = self
+        self.authorsTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+        self.authorsTableView.delegate = self
+        self.authorsTableView.dataSource = self
     }
     
     @objc func addMovie() {
@@ -41,14 +41,14 @@ class MoviesViewController: UIViewController {
     
 }
 
-extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
+extension AuthorsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies.count
+        return self.authors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.movieTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
-        cell.setupCell(item: self.movies[indexPath.row])
+        let cell = self.authorsTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+        cell.setupCell(item: self.authors[indexPath.row])
         return cell
     }
     
