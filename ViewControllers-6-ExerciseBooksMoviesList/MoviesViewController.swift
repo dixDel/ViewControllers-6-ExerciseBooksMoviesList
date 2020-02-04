@@ -56,4 +56,11 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         return 150
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let destination = storyboard.instantiateViewController(identifier: "ItemDetailsViewController") as! ItemDetailsViewController
+        destination.customTitle = self.movies[indexPath.row].name
+        self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
 }

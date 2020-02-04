@@ -69,6 +69,34 @@
             </objects>
             <point key="canvasLocation" x="344.92753623188406" y="-587.27678571428567"/>
         </scene>
+        <!--Item Details View Controller-->
+        <scene sceneID="XsO-yP-O6L">
+            <objects>
+                <viewController storyboardIdentifier="ItemDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oAx-cC-uhf" customClass="ItemDetailsViewController" customModule="ViewControllers_6_ExerciseBooksMoviesList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RdS-wQ-j6t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pd-8j-Idm">
+                                <rect key="frame" x="10" y="64" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6pd-8j-Idm" firstAttribute="top" secondItem="CnL-lw-xlQ" secondAttribute="top" constant="20" id="CQ1-0u-u2M"/>
+                            <constraint firstItem="CnL-lw-xlQ" firstAttribute="trailing" secondItem="6pd-8j-Idm" secondAttribute="trailing" constant="10" id="EPQ-DV-DRA"/>
+                            <constraint firstItem="6pd-8j-Idm" firstAttribute="leading" secondItem="CnL-lw-xlQ" secondAttribute="leading" constant="10" id="ain-8q-tnc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CnL-lw-xlQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QP1-av-Pc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2223" y="-690"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QUF-bS-wER">
             <objects>
