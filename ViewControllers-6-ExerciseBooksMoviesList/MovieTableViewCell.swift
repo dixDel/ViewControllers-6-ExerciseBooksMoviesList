@@ -24,9 +24,9 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(movie: Movie) {
-        self.nameLabel.text = movie.name
-        if let picture = movie.picture {
+    func setupCell(item: Item) {
+        self.nameLabel.text = item.name
+        if let picture = item.picture {
             self.pictureImageView.image = picture
             self.pictureImageView.contentMode = .scaleAspectFit
         }

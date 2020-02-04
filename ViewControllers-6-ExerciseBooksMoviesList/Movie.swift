@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Movie {
+class Movie: Item {
     
     var name: String
     var picture: UIImage? = nil

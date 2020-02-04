@@ -38,7 +38,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.movieTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
-        cell.setupCell(movie: self.movies[indexPath.row])
+        cell.setupCell(item: self.movies[indexPath.row])
         return cell
     }
     
