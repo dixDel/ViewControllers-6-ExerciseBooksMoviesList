@@ -13,6 +13,8 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
     
+    var isPair: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +31,11 @@ class MovieTableViewCell: UITableViewCell {
         if let picture = item.picture {
             self.pictureImageView.image = picture
             self.pictureImageView.contentMode = .scaleAspectFit
+        }
+        if isPair {
+            self.backgroundColor = .white
+        } else {
+            self.backgroundColor = .lightGray
         }
     }
     

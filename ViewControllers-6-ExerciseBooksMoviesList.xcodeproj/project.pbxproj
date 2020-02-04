@@ -59,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F94A229823E9C51200C9EB13 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F94A228623E98AF000C9EB13 /* Movie.swift */,
+				F94A228C23E9A90E00C9EB13 /* Book.swift */,
+				F94A228E23E9A9B400C9EB13 /* Item.swift */,
+				F94A229423E9BB6400C9EB13 /* Author.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		F9B159AC23E971F60083FD68 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +89,7 @@
 		F9B159B723E971F60083FD68 /* ViewControllers-6-ExerciseBooksMoviesList */ = {
 			isa = PBXGroup;
 			children = (
+				F94A229823E9C51200C9EB13 /* Entities */,
 				F9B159B823E971F60083FD68 /* AppDelegate.swift */,
 				F9B159BA23E971F60083FD68 /* SceneDelegate.swift */,
 				F9B159BC23E971F60083FD68 /* MoviesViewController.swift */,
@@ -87,14 +99,10 @@
 				F9B159C623E971F60083FD68 /* Info.plist */,
 				F9B159CC23E988820083FD68 /* MovieTableViewCell.swift */,
 				F9B159CD23E988820083FD68 /* MovieTableViewCell.xib */,
-				F94A228623E98AF000C9EB13 /* Movie.swift */,
 				F94A228823E9A6FB00C9EB13 /* BooksViewController.swift */,
 				F94A228A23E9A78400C9EB13 /* ItemsViewController.swift */,
-				F94A228C23E9A90E00C9EB13 /* Book.swift */,
-				F94A228E23E9A9B400C9EB13 /* Item.swift */,
 				F94A229023E9AC6D00C9EB13 /* AuthorsViewController.swift */,
 				F94A229223E9ADE400C9EB13 /* AddItemViewController.swift */,
-				F94A229423E9BB6400C9EB13 /* Author.swift */,
 				F94A229623E9C07C00C9EB13 /* ItemDetailsViewController.swift */,
 			);
 			path = "ViewControllers-6-ExerciseBooksMoviesList";
