@@ -15,12 +15,14 @@ class Movie: Item {
     var author: String
     var picture: UIImage? = nil
     var year: Int? = nil
+    var genres: [Genre]? = nil
     
-    init(name: String, author: String, picture: UIImage? = nil, year: Int? = nil) {
+    init(name: String, author: String, picture: UIImage? = nil, year: Int? = nil, genres: [Genre]? = nil) {
         self.name = name
         self.author = author
         self.picture = picture
         self.year = year
+        self.genres = genres
     }
     
 }

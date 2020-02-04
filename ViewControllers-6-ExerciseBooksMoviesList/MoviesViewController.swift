@@ -13,7 +13,10 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var movieTableView: UITableView!
     
     private var movies = [
-        Movie(name: "Terminator 2", author: "James Cameron", picture: #imageLiteral(resourceName: "terminator2"), year: 1991),
+        Movie(name: "Terminator 2", author: "James Cameron", picture: #imageLiteral(resourceName: "terminator2"), year: 1991, genres: [
+            Genres.SciFi,
+            Genres.Action
+        ]),
         Movie(name: "Blanche-Neige et les septs mains", author: "Waf Dixney", picture: #imageLiteral(resourceName: "Blanche-Neige")),
         Movie(name: "Gattaca", author: "Andrew Niccol", picture: #imageLiteral(resourceName: "Gattaca"), year: 1997),
         Movie(name: "Fight Club", author: "David Fincher", picture: #imageLiteral(resourceName: "fight club"), year: 1999)

@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum Genres: String, CaseIterable {
+    case SciFi = "Sci-Fi"
+    case Action
+}
+
 protocol Item {
     var name: String { get set }
     var picture: UIImage? { get set }
