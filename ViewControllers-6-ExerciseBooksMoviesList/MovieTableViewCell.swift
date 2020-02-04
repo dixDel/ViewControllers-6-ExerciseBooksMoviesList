@@ -35,7 +35,7 @@ class MovieTableViewCell: UITableViewCell {
         if isPair {
             self.backgroundColor = .white
         } else {
-            self.backgroundColor = .lightGray
+            self.backgroundColor = UIColor(cgColor: CGColor(srgbRed: 0.9, green: 0.9, blue: 0.9, alpha: 1.0))
         }
     }
     

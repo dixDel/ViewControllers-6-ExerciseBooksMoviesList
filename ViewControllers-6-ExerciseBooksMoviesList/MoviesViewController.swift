@@ -13,6 +13,7 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var movieTableView: UITableView!
     
     private var movies = [
+        Movie(name: "Terminator 2", author: "James Cameron", picture: #imageLiteral(resourceName: "terminator2"), year: 1991),
         Movie(name: "Blanche-Neige et les septs mains", author: "Waf Dixney", picture: #imageLiteral(resourceName: "Blanche-Neige")),
         Movie(name: "Gattaca", author: "Andrew Niccol", picture: #imageLiteral(resourceName: "Gattaca"), year: 1997),
         Movie(name: "Fight Club", author: "David Fincher", picture: #imageLiteral(resourceName: "fight club"), year: 1999)
@@ -68,6 +69,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         let destination = storyboard.instantiateViewController(identifier: "ItemDetailsViewController") as! ItemDetailsViewController
         destination.customTitle = self.movies[indexPath.row].name
         self.navigationController?.pushViewController(destination, animated: true)
+        self.movieTableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
