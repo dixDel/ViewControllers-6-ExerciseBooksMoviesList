@@ -10,7 +10,7 @@ import UIKit
 
 class GenreCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var genreButton: UIButton!
+    @IBOutlet weak var genreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,11 +18,9 @@ class GenreCollectionViewCell: UICollectionViewCell {
     }
 
     func setupCell(genre: Genres) {
-        self.genreButton.setTitle(genre.rawValue, for: .normal)
-    }
-    
-    @IBAction func genreAction(_ sender: Any) {
-        print("genre")
+        self.genreLabel.text = genre.rawValue
+        self.genreLabel.textAlignment = .center
+        self.genreLabel.textColor = .purple
     }
     
 }

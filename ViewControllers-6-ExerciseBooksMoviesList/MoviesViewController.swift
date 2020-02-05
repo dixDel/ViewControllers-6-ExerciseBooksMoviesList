@@ -17,15 +17,16 @@ class MoviesViewController: UIViewController {
         genre1.rawValue < genre2.rawValue
     }
     
-    private var movies = [
+    private let movies = [
         Movie(name: "Terminator 2", author: "James Cameron", picture: #imageLiteral(resourceName: "terminator2"), year: 1991, genres: [
             Genres.SciFi,
             Genres.Action
         ]),
-        Movie(name: "Blanche-Neige et les septs mains", author: "Waf Dixney", picture: #imageLiteral(resourceName: "Blanche-Neige")),
-        Movie(name: "Gattaca", author: "Andrew Niccol", picture: #imageLiteral(resourceName: "Gattaca"), year: 1997),
+        Movie(name: "Blanche-Neige et les septs mains", author: "Waf Dixney", picture: #imageLiteral(resourceName: "Blanche-Neige"), genres: [Genres.X]),
+        Movie(name: "Gattaca", author: "Andrew Niccol", picture: #imageLiteral(resourceName: "Gattaca"), year: 1997, genres: [Genres.SciFi]),
         Movie(name: "Fight Club", author: "David Fincher", picture: #imageLiteral(resourceName: "fight club"), year: 1999)
     ]
+    private var displayedMovies = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class MoviesViewController: UIViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
         self.navigationItem.rightBarButtonItem = addButton
         
-        self.movies.sort { (movie1, movie2) -> Bool in
+        self.displayedMovies = self.movies.sorted { (movie1, movie2) -> Bool in
             movie1.name < movie2.name
         }
         
@@ -68,13 +69,13 @@ class MoviesViewController: UIViewController {
 
 extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movies.count
+        return self.displayedMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.movieTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
         cell.isPair = indexPath.row % 2 == 0
-        cell.setupCell(item: self.movies[indexPath.row])
+        cell.setupCell(item: self.displayedMovies[indexPath.row])
         return cell
     }
     
@@ -85,7 +86,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let destination = storyboard.instantiateViewController(identifier: "ItemDetailsViewController") as! ItemDetailsViewController
-        destination.customTitle = self.movies[indexPath.row].name
+        destination.customTitle = self.displayedMovies[indexPath.row].name
         self.navigationController?.pushViewController(destination, animated: true)
         self.movieTableView.deselectRow(at: indexPath, animated: true)
     }
@@ -105,5 +106,16 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.displayedMovies = self.movies.filter { (movie) -> Bool in
+            var isMatch = false
+            if let movieGenre = movie.genres {
+                isMatch = movieGenre.contains(self.genres[indexPath.row])
+            }
+            return isMatch
+        }
+        self.movieTableView.reloadData()
     }
 }

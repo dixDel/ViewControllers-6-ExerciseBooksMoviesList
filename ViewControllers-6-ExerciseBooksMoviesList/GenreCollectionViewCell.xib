@@ -16,25 +16,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyM-Rc-X0X">
-                        <rect key="frame" x="5" y="0.0" width="140" height="50"/>
-                        <state key="normal" title="Button"/>
-                        <connections>
-                            <action selector="genreAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="lnd-6i-i39"/>
-                        </connections>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKS-2d-rIn">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="yyM-Rc-X0X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="GAB-qd-ocP"/>
-                <constraint firstItem="yyM-Rc-X0X" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gdr-Vj-td8"/>
-                <constraint firstAttribute="trailing" secondItem="yyM-Rc-X0X" secondAttribute="trailing" constant="5" id="LP8-Xw-LCn"/>
-                <constraint firstAttribute="bottom" secondItem="yyM-Rc-X0X" secondAttribute="bottom" id="YLf-DN-eR1"/>
+                <constraint firstItem="pKS-2d-rIn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8hB-vg-FfY"/>
+                <constraint firstItem="pKS-2d-rIn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AU6-8r-RRe"/>
+                <constraint firstAttribute="trailing" secondItem="pKS-2d-rIn" secondAttribute="trailing" id="JUJ-Ip-81B"/>
+                <constraint firstAttribute="bottom" secondItem="pKS-2d-rIn" secondAttribute="bottom" id="woO-ap-C1g"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="318" height="191"/>
             <connections>
-                <outlet property="genreButton" destination="yyM-Rc-X0X" id="7S2-ie-enC"/>
+                <outlet property="genreLabel" destination="pKS-2d-rIn" id="GvC-XO-D6E"/>
             </connections>
             <point key="canvasLocation" x="326.08695652173918" y="199.88839285714286"/>
         </collectionViewCell>
