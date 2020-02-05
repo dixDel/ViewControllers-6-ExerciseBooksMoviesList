@@ -17,6 +17,7 @@ enum Genres: String, CaseIterable {
     case X
     case Fantasy = "Fantastique"
     case Historical = "Historique"
+    case A = "Tous"
 }
 
 protocol Item {

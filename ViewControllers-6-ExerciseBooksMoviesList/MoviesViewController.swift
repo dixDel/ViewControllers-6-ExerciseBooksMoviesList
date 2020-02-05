@@ -14,7 +14,11 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var movieTableView: UITableView!
     
     private let genres = Genres.allCases.sorted { (genre1, genre2) -> Bool in
-        genre1.rawValue < genre2.rawValue
+        if genre1 == Genres.A {
+            return true
+        } else {
+            return genre1.rawValue < genre2.rawValue
+        }
     }
     
     private let movies = [
@@ -28,6 +32,12 @@ class MoviesViewController: UIViewController {
     ]
     private var displayedMovies = [Movie]()
     
+    fileprivate func resetDisplayedMovies() {
+        self.displayedMovies = self.movies.sorted { (movie1, movie2) -> Bool in
+            movie1.name < movie2.name
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,9 +46,7 @@ class MoviesViewController: UIViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
         self.navigationItem.rightBarButtonItem = addButton
         
-        self.displayedMovies = self.movies.sorted { (movie1, movie2) -> Bool in
-            movie1.name < movie2.name
-        }
+        resetDisplayedMovies()
         
         setupTableView()
         setupCollectionView()
@@ -109,12 +117,17 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.displayedMovies = self.movies.filter { (movie) -> Bool in
-            var isMatch = false
-            if let movieGenre = movie.genres {
-                isMatch = movieGenre.contains(self.genres[indexPath.row])
+        let genre = self.genres[indexPath.row]
+        if genre != Genres.A {
+            self.displayedMovies = self.movies.filter { (movie) -> Bool in
+                var isMatch = false
+                if let movieGenre = movie.genres {
+                    isMatch = movieGenre.contains(self.genres[indexPath.row])
+                }
+                return isMatch
             }
-            return isMatch
+        } else {
+            self.resetDisplayedMovies()
         }
         self.movieTableView.reloadData()
     }
