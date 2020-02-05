@@ -11,9 +11,10 @@ import UIKit
 
 class Author: Item {
     var name: String
+    var authors: [Author]? = nil
     var picture: UIImage?
     
-    init(name: String, picture: UIImage?) {
+    init(name: String, picture: UIImage? = nil) {
         self.name = name
         self.picture = picture
     }

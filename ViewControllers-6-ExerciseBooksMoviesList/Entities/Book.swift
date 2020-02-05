@@ -12,12 +12,12 @@ import UIKit
 class Book: Item {
     
     var name: String
-    var author: String
+    var authors: [Author]?
     var picture: UIImage?
     
-    init(title: String, picture: UIImage? = nil, author: String) {
+    init(title: String, picture: UIImage? = nil, authors: [Author]? = nil) {
         self.name = title
         self.picture = picture
-        self.author = author
+        self.authors = authors
     }
 }

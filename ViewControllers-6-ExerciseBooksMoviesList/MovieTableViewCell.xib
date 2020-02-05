@@ -22,24 +22,35 @@
                             <constraint firstAttribute="width" constant="120" id="u5K-Ty-5Ja"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKJ-Pf-vqZ">
-                        <rect key="frame" x="130" y="5" width="192" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKJ-Pf-vqZ">
+                        <rect key="frame" x="130" y="10" width="192" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-qh-ErD">
+                        <rect key="frame" x="130" y="60.5" width="192" height="107.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="gmi-qh-ErD" secondAttribute="trailing" constant="10" id="6Ph-0c-wVl"/>
                     <constraint firstAttribute="bottom" secondItem="bFy-oa-cp9" secondAttribute="bottom" constant="5" id="7pD-Z9-aCE"/>
+                    <constraint firstAttribute="bottom" secondItem="gmi-qh-ErD" secondAttribute="bottom" constant="10" id="Dah-qJ-m8y"/>
+                    <constraint firstItem="gmi-qh-ErD" firstAttribute="leading" secondItem="sKJ-Pf-vqZ" secondAttribute="leading" id="Usb-rW-o1J"/>
                     <constraint firstItem="bFy-oa-cp9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vpk-d6-kJ3"/>
                     <constraint firstItem="bFy-oa-cp9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="jV7-n4-V8h"/>
                     <constraint firstItem="sKJ-Pf-vqZ" firstAttribute="leading" secondItem="bFy-oa-cp9" secondAttribute="trailing" constant="10" id="jkT-99-Ter"/>
                     <constraint firstAttribute="trailing" secondItem="sKJ-Pf-vqZ" secondAttribute="trailing" constant="10" id="uE8-DK-Keo"/>
-                    <constraint firstItem="sKJ-Pf-vqZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xwz-JL-uWO"/>
+                    <constraint firstItem="gmi-qh-ErD" firstAttribute="top" secondItem="sKJ-Pf-vqZ" secondAttribute="bottom" constant="30" id="uy1-NG-MF2"/>
+                    <constraint firstItem="sKJ-Pf-vqZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xwz-JL-uWO"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="authorLabel" destination="gmi-qh-ErD" id="DTT-zC-maH"/>
                 <outlet property="nameLabel" destination="sKJ-Pf-vqZ" id="lpO-3q-cIh"/>
                 <outlet property="pictureImageView" destination="bFy-oa-cp9" id="hlM-69-NpO"/>
             </connections>

@@ -12,6 +12,7 @@ class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
+    @IBOutlet weak var authorLabel: UILabel!
     
     var isPair: Bool = false
     
@@ -28,6 +29,14 @@ class MovieTableViewCell: UITableViewCell {
     
     func setupCell(item: Item) {
         self.nameLabel.text = item.name
+        self.nameLabel.font = self.nameLabel.font.withSize(30)
+        self.nameLabel.font = UIFont.boldSystemFont(ofSize: self.nameLabel.font.pointSize)
+        self.authorLabel.text = ""
+        if let authors = item.authors {
+            self.authorLabel.text = authors.map({ (author) -> String in
+                author.name
+            }).joined(separator: ", ")
+        }
         if let picture = item.picture {
             self.pictureImageView.image = picture
             self.pictureImageView.contentMode = .scaleAspectFit

@@ -23,5 +23,6 @@ enum Genres: String, CaseIterable {
 
 protocol Item {
     var name: String { get set }
+    var authors: [Author]? { get set } 
     var picture: UIImage? { get set }
 }

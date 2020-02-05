@@ -13,8 +13,9 @@ class AuthorsViewController: UIViewController {
     @IBOutlet weak var authorsTableView: UITableView!
     
     private let authors = [
-        Author(name: "Isaac Asimov", picture: nil),
-        Author(name: "Waf Dixney", picture: nil)
+        Author(name: "Isaac Asimov", picture: #imageLiteral(resourceName: "liv tyler")),
+        Author(name: "Waf Dixney", picture: #imageLiteral(resourceName: "liv tyler")),
+        Author(name: "Mel Gibson", picture: #imageLiteral(resourceName: "liv tyler"))
     ]
     
     override func viewDidLoad() {

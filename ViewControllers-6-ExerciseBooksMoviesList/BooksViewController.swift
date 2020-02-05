@@ -12,7 +12,7 @@ class BooksViewController: UIViewController {
     @IBOutlet weak var booksTableView: UITableView!
     
     private let books = [
-        Book(title: "Fondation", picture: #imageLiteral(resourceName: "Fondation-Asimov"), author: "Isaac Asimov")
+        Book(title: "Fondation", picture: #imageLiteral(resourceName: "Fondation-Asimov"), authors: [Author(name: "Isaac Asimov")])
     ]
     
     override func viewDidLoad() {
