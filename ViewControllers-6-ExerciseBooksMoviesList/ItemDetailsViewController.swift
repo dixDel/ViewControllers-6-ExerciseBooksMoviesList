@@ -36,6 +36,7 @@ class ItemDetailsViewController: UIViewController {
                     self.dateLabel.text = "\(year)"
                 }
                 self.descriptionLabel.text = movie.description
+                self.descriptionLabel.numberOfLines = 0
             }
         }
     }

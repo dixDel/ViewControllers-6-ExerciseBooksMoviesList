@@ -11,7 +11,7 @@ import UIKit
 
 class Movie: Item {
     
-    var name: String
+    var name: String //Oh yes j'adore les String
     var picture: UIImage? = nil
     var year: Int? = nil
     var genres: [Genres]? = nil

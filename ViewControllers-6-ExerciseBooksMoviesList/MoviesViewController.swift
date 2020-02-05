@@ -8,12 +8,16 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController {
+class MoviesViewController: UIViewController, AddItemDelegate {
 
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var movieTableView: UITableView!
     
-    private let genres = Genres.allCases.sorted { (genre1, genre2) -> Bool in
+    private let genres = Genres.allCases
+        .filter({ (genre) -> Bool in
+        genre != Genres.NIL
+    })
+        .sorted { (genre1, genre2) -> Bool in
         if genre1 == Genres.A {
             return true
         } else {
@@ -21,7 +25,7 @@ class MoviesViewController: UIViewController {
         }
     }
     
-    private let movies = [
+    private var movies = [
         Movie(name: "Terminator 2", picture: #imageLiteral(resourceName: "terminator2"), year: 1991, genres: [
             Genres.SciFi,
             Genres.Action
@@ -72,7 +76,14 @@ class MoviesViewController: UIViewController {
     @objc func addMovie() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let addController = storyboard.instantiateViewController(identifier: "AddItemViewController") as! AddItemViewController
+        addController.delegate = self
         self.present(addController, animated: true, completion: nil)
+    }
+    
+    func itemAdditionFinished(item: Item) {
+        let movie = item as! Movie
+        self.movies.append(movie)
+        self.movieTableView.insertRows(at: [IndexPath(row: self.movies.count, section: 0)], with: .automatic)
     }
     
 }
@@ -94,10 +105,10 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let destination = storyboard.instantiateViewController(identifier: "ItemDetailsViewController") as! ItemDetailsViewController
-        destination.item = self.displayedMovies[indexPath.row]
-        self.navigationController?.pushViewController(destination, animated: true)
+        if let destination = storyboard?.instantiateViewController(identifier: "ItemDetailsViewController") as? ItemDetailsViewController {
+            destination.item = self.displayedMovies[indexPath.row]
+            self.navigationController?.pushViewController(destination, animated: true)
+        }
         self.movieTableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -105,7 +116,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Genres.allCases.count
+        return self.genres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

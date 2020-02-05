@@ -13,11 +13,12 @@ enum Genres: String, CaseIterable {
     case Action
     case Aventure
     case Comedy = "Comédie"
-    case X
+    case X //JE LE SAVAIS
     case Fantasy = "Fantastique"
     case Historical = "Historique"
     case A = "Tous"
     case Drama = "Drame"
+    case NIL = ""
 }
 
 class FakeDatabase {
@@ -30,7 +31,8 @@ class FakeDatabase {
         Author(name: "Wouf Dicksney"),
         Author(name: "Andrew Niccol"),
         Author(name: "David Fincher"),
-        Author(name: "Martin Scorsese")
+        Author(name: "Martin Scorsese"),
+        Author(name: "")
     ]
     
 }
