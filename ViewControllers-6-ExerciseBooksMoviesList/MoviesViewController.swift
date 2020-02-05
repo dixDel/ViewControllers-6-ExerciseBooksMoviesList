@@ -10,7 +10,12 @@ import UIKit
 
 class MoviesViewController: UIViewController {
 
+    @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var movieTableView: UITableView!
+    
+    private let genres = Genres.allCases.sorted { (genre1, genre2) -> Bool in
+        genre1.rawValue < genre2.rawValue
+    }
     
     private var movies = [
         Movie(name: "Terminator 2", author: "James Cameron", picture: #imageLiteral(resourceName: "terminator2"), year: 1991, genres: [
@@ -35,12 +40,22 @@ class MoviesViewController: UIViewController {
         }
         
         setupTableView()
+        setupCollectionView()
     }
 
     func setupTableView() {
         self.movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
         self.movieTableView.delegate = self
         self.movieTableView.dataSource = self
+    }
+    
+    func setupCollectionView() {
+        self.genresCollectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCell")
+        self.genresCollectionView.dataSource = self
+        self.genresCollectionView.delegate = self
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.genresCollectionView.collectionViewLayout = layout
     }
     
     @objc func addMovie() {
@@ -75,4 +90,20 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         self.movieTableView.deselectRow(at: indexPath, animated: true)
     }
     
+}
+
+extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Genres.allCases.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.genresCollectionView.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
+        cell.setupCell(genre: self.genres[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 50)
+    }
 }

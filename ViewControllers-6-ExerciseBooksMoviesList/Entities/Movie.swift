@@ -15,9 +15,9 @@ class Movie: Item {
     var author: String
     var picture: UIImage? = nil
     var year: Int? = nil
-    var genres: [Genre]? = nil
+    var genres: [Genres]? = nil
     
-    init(name: String, author: String, picture: UIImage? = nil, year: Int? = nil, genres: [Genre]? = nil) {
+    init(name: String, author: String, picture: UIImage? = nil, year: Int? = nil, genres: [Genres]? = nil) {
         self.name = name
         self.author = author
         self.picture = picture
