@@ -130,5 +130,10 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             self.resetDisplayedMovies()
         }
         self.movieTableView.reloadData()
+        self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .lightGray
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .white
     }
 }

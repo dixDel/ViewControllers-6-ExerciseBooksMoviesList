@@ -18,6 +18,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     }
 
     func setupCell(genre: Genres) {
+        self.backgroundColor = .white
         self.genreLabel.text = genre.rawValue
         self.genreLabel.textAlignment = .center
         self.genreLabel.textColor = .purple
