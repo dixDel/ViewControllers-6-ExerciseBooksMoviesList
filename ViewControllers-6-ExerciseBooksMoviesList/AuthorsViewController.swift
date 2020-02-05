@@ -48,6 +48,7 @@ extension AuthorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.authorsTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+        cell.isPair = indexPath.row % 2 == 0
         cell.setupCell(item: self.authors[indexPath.row])
         return cell
     }

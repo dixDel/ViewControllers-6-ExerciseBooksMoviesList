@@ -39,6 +39,7 @@ extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.booksTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+        cell.isPair = indexPath.row % 2 == 0
         cell.setupCell(item: self.books[indexPath.row])
         return cell
     }

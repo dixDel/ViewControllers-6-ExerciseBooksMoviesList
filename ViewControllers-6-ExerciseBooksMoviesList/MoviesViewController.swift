@@ -28,7 +28,9 @@ class MoviesViewController: UIViewController {
         ]),
         Movie(name: "Blanche-Neige et les septs mains", author: "Waf Dixney", picture: #imageLiteral(resourceName: "Blanche-Neige"), genres: [Genres.X]),
         Movie(name: "Gattaca", author: "Andrew Niccol", picture: #imageLiteral(resourceName: "Gattaca"), year: 1997, genres: [Genres.SciFi]),
-        Movie(name: "Fight Club", author: "David Fincher", picture: #imageLiteral(resourceName: "fight club"), year: 1999)
+        Movie(name: "Fight Club", author: "David Fincher", picture: #imageLiteral(resourceName: "fight club"), year: 1999),
+        Movie(name: "Goodfellas", author: "Martin Scorsese", picture: #imageLiteral(resourceName: "goodfellas"), year: 1990, genres: [Genres.Drama]),
+        Movie(name: "Braveheart", author: "Mel Gibson", picture: #imageLiteral(resourceName: "braveheart"), year: 1995, genres: [Genres.Action, Genres.Historical, Genres.Aventure])
     ]
     private var displayedMovies = [Movie]()
     
