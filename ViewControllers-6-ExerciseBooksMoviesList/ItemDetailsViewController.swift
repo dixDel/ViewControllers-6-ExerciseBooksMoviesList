@@ -10,13 +10,34 @@ import UIKit
 
 class ItemDetailsViewController: UIViewController {
 
-    var customTitle: String = ""
+    @IBOutlet weak var pictureImageView: UIImageView!
+    @IBOutlet weak var authorsLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var item: Item?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = self.customTitle
+        if let item = self.item {
+            self.navigationItem.title = item.name
+            self.pictureImageView.image = item.picture
+            self.dateLabel.text = ""
+            self.authorsLabel.text = ""
+            self.descriptionLabel.text = ""
+            self.authorsLabel.text = item.authors?.map({ (author) -> String in
+                author.name
+                }).joined(separator: ", ")
+            if item is Movie {
+                let movie = item as! Movie
+                if let year = movie.year {
+                    self.dateLabel.text = "\(year)"
+                }
+                self.descriptionLabel.text = movie.description
+            }
+        }
     }
     
 

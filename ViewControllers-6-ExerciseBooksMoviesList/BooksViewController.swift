@@ -12,14 +12,25 @@ class BooksViewController: UIViewController {
     @IBOutlet weak var booksTableView: UITableView!
     
     private let books = [
-        Book(title: "Fondation", picture: #imageLiteral(resourceName: "Fondation-Asimov"), authors: [Author(name: "Isaac Asimov")])
+        Book(title: "Fondation", picture: #imageLiteral(resourceName: "Fondation-Asimov"), authors: [Author(name: "Isaac Asimov")]),
+        Book(title: "Le Seigneur des anneaux", picture: #imageLiteral(resourceName: "seigneur anneaux"), authors: [Author(name: "J.R.R. Tolkien")])
     ]
+    
+    private var displayedBooks = [Book]()
+    
+    fileprivate func resetDisplayedBooks() {
+        self.displayedBooks = self.books.sorted { (b1, b2) -> Bool in
+            b1.name < b2.name
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         self.navigationItem.title = "Livres"
+        
+        resetDisplayedBooks()
         
         setupTableView()
     }
@@ -46,6 +57,14 @@ extension BooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let destination = storyboard.instantiateViewController(identifier: "ItemDetailsViewController") as! ItemDetailsViewController
+        destination.item = self.displayedBooks[indexPath.row]
+        self.navigationController?.pushViewController(destination, animated: true)
+        self.booksTableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

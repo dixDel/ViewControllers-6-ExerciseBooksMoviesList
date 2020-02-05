@@ -96,7 +96,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let destination = storyboard.instantiateViewController(identifier: "ItemDetailsViewController") as! ItemDetailsViewController
-        destination.customTitle = self.displayedMovies[indexPath.row].name
+        destination.item = self.displayedMovies[indexPath.row]
         self.navigationController?.pushViewController(destination, animated: true)
         self.movieTableView.deselectRow(at: indexPath, animated: true)
     }

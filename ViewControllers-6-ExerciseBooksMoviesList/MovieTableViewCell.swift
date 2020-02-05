@@ -31,6 +31,8 @@ class MovieTableViewCell: UITableViewCell {
         self.nameLabel.text = item.name
         self.nameLabel.font = self.nameLabel.font.withSize(30)
         self.nameLabel.font = UIFont.boldSystemFont(ofSize: self.nameLabel.font.pointSize)
+        self.pictureImageView.image = #imageLiteral(resourceName: "author")
+        self.pictureImageView.contentMode = .center
         self.authorLabel.text = ""
         if let authors = item.authors {
             self.authorLabel.text = authors.map({ (author) -> String in

@@ -9,18 +9,6 @@
 import Foundation
 import UIKit
 
-enum Genres: String, CaseIterable {
-    case SciFi = "Sci-Fi"
-    case Action
-    case Aventure
-    case Comedy = "Comédie"
-    case X
-    case Fantasy = "Fantastique"
-    case Historical = "Historique"
-    case A = "Tous"
-    case Drama = "Drame"
-}
-
 protocol Item {
     var name: String { get set }
     var authors: [Author]? { get set } 
