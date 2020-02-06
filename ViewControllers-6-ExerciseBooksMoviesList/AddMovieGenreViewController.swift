@@ -10,6 +10,8 @@ import UIKit
 
 class AddMovieGenreViewController: UIViewController {
     
+    @IBOutlet weak var genresLabel: UILabel!
+    @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var genresPickerView: UIPickerView!
     @IBOutlet weak var authorsPickerView: UIPickerView!
     
@@ -30,6 +32,9 @@ class AddMovieGenreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.genresLabel.textAlignment = .center
+        self.authorsLabel.textAlignment = .center
+        
         // Do any additional setup after loading the view.
         self.authors = database.authors.sorted { (a1, a2) -> Bool in
             if a1.name.isEmpty {

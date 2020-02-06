@@ -14,6 +14,10 @@ protocol AddItemDelegate {
 
 class AddItemViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
@@ -41,11 +45,18 @@ class AddItemViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        self.navigationItem.title = "Ajouter un truc"
+        self.navigationItem.title = "Ajouter un film"
         
         self.saveButton.setTitle("Enregistrer", for: .normal)
         
         self.cancelButton.setTitle("Annuler", for: .normal)
+        
+        self.nameLabel.text = "Titre"
+        self.descriptionLabel.text = "Descriptif"
+        self.yearLabel.text = "Année"
+        self.nameLabel.textAlignment = .right
+        self.descriptionLabel.textAlignment = .right
+        self.yearLabel.textAlignment = .right
         
         self.nameTextField.text = ""
         self.descriptionTextField.text = ""
@@ -63,8 +74,6 @@ class AddItemViewController: UIViewController {
         let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AddMovieGenreViewController")
         if let nav = self.navigationController {
             nav.pushViewController(destination, animated: true)
-            //nav.present(destination, animated: true, completion: nil)
-            print("swiped!")
         }
     }
     
