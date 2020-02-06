@@ -83,4 +83,9 @@ extension AddMovieGenreViewController: UIPickerViewDelegate, UIPickerViewDataSou
         }
         return name
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let parent = self.navigationController?.viewControllers[0] as! AddItemViewController
+        parent.genre = self.genres[row].rawValue
+    }
 }

@@ -23,6 +23,8 @@ class AddItemViewController: UIViewController {
     
     var delegate: AddItemDelegate?
     
+    var genre: String?
+    
     fileprivate func displayImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self

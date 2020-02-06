@@ -38,6 +38,8 @@ class MoviesViewController: UIViewController, AddItemDelegate {
     ]
     private var displayedMovies = [Movie]()
     
+    private var hasNewMovie: Bool = false
+    
     fileprivate func resetDisplayedMovies() {
         self.displayedMovies = self.movies.sorted { (movie1, movie2) -> Bool in
             movie1.name < movie2.name
@@ -85,10 +87,17 @@ class MoviesViewController: UIViewController, AddItemDelegate {
     func itemAdditionFinished(item: Item) {
         let movie = item as! Movie
         self.movies.append(movie)
-        self.resetDisplayedMovies()
-        self.movieTableView.insertRows(at: [IndexPath(row: self.movies.count - 1, section: 0)], with: .automatic)
+        hasNewMovie = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if hasNewMovie {
+            let genre = self.genres[0]
+            filterMovies(genre)
+            self.genresCollectionView.reloadData()
+            hasNewMovie = false
+        }
+    }
 }
 
 extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -125,6 +134,10 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.genresCollectionView.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
         cell.setupCell(genre: self.genres[indexPath.row])
+        if self.genres[indexPath.row] == Genres.A {
+            cell.backgroundColor = .lightGray
+            cell.isSelected = true
+        }
         return cell
     }
     
@@ -132,13 +145,12 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return CGSize(width: 100, height: 50)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let genre = self.genres[indexPath.row]
+    fileprivate func filterMovies(_ genre: Genres) {
         if genre != Genres.A {
             self.displayedMovies = self.movies.filter { (movie) -> Bool in
                 var isMatch = false
                 if let movieGenre = movie.genres {
-                    isMatch = movieGenre.contains(self.genres[indexPath.row])
+                    isMatch = movieGenre.contains(genre)
                 }
                 return isMatch
             }
@@ -146,10 +158,16 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             self.resetDisplayedMovies()
         }
         self.movieTableView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let genre = self.genres[indexPath.row]
+        filterMovies(genre)
         self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .lightGray
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .white
+        print("deselected")
+        self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .clear
     }
 }
