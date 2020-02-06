@@ -31,6 +31,8 @@ class AddMovieGenreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "Genres et auteurs"
 
         self.genresLabel.textAlignment = .center
         self.authorsLabel.textAlignment = .center
@@ -59,6 +61,11 @@ class AddMovieGenreViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+    @IBAction func nextAction(_ sender: Any) {
+        if let third = storyboard?.instantiateViewController(identifier: "thirdFormViewController") {
+            self.navigationController?.pushViewController(third, animated: true)
+        }
+    }
     /*
     // MARK: - Navigation
 

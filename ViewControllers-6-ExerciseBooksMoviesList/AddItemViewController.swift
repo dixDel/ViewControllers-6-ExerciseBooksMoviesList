@@ -80,9 +80,10 @@ class AddItemViewController: UIViewController {
     }
     
     @objc func viewSwipped(gesture: UIGestureRecognizer) {
-        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AddMovieGenreViewController")
-        if let nav = self.navigationController {
-            nav.pushViewController(destination, animated: true)
+        if let destination = storyboard?.instantiateViewController(identifier: "AddMovieGenreViewController") {
+            if let nav = self.navigationController {
+                nav.pushViewController(destination, animated: true)
+            }
         }
     }
     
