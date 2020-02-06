@@ -13,7 +13,7 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     var item: Item?
     
@@ -26,17 +26,16 @@ class ItemDetailsViewController: UIViewController {
             self.pictureImageView.image = item.picture
             self.dateLabel.text = ""
             self.authorsLabel.text = ""
-            self.descriptionLabel.text = ""
+            self.descriptionTextView.text = ""
             self.authorsLabel.text = item.authors?.map({ (author) -> String in
                 author.name
                 }).joined(separator: ", ")
             if item is Movie {
                 let movie = item as! Movie
                 if let year = movie.year {
-                    self.dateLabel.text = "\(year)"
+                    self.dateLabel.text = "Année : \(year)"
                 }
-                self.descriptionLabel.text = movie.description
-                self.descriptionLabel.numberOfLines = 0
+                self.descriptionTextView.text = movie.description
             }
         }
     }
