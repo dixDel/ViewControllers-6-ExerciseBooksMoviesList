@@ -74,10 +74,12 @@ class MoviesViewController: UIViewController, AddItemDelegate {
     }
     
     @objc func addMovie() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let addController = storyboard.instantiateViewController(identifier: "AddItemViewController") as! AddItemViewController
-        addController.delegate = self
-        self.present(addController, animated: true, completion: nil)
+        if let navigationController = storyboard?.instantiateViewController(identifier: "AddMovieNavigationController") as? UINavigationController {
+            let controller = navigationController.viewControllers[0] as! AddItemViewController
+            controller.delegate = self
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true, completion: nil)
+        }
     }
     
     func itemAdditionFinished(item: Item) {

@@ -19,24 +19,9 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
-    @IBOutlet weak var authorsPickerView: UIPickerView!
-    @IBOutlet weak var genresPickerView: UIPickerView!
     @IBOutlet weak var pictureImageView: UIImageView!
     
     var delegate: AddItemDelegate?
-    var database: FakeDatabase = FakeDatabase()
-    var genres = Genres.allCases
-        .filter({ (genre) -> Bool in
-        genre != Genres.A
-        })
-        .sorted { (genre1, genre2) -> Bool in
-            if genre1 == Genres.NIL {
-                return true
-            } else {
-                return genre1.rawValue < genre2.rawValue
-            }
-    }
-    var authors = [Author]()
     
     fileprivate func displayImagePicker() {
         let imagePicker = UIImagePickerController()
@@ -48,14 +33,11 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let swiper = UISwipeGestureRecognizer(target: self, action: #selector(viewSwipped(gesture:)))
+        swiper.direction = .left
+        self.view.addGestureRecognizer(swiper)
+        
         // Do any additional setup after loading the view.
-        self.authors = database.authors.sorted { (a1, a2) -> Bool in
-            if a1.name.isEmpty {
-                return true
-            } else {
-                return a1.name < a2.name
-            }
-        }
         
         self.navigationItem.title = "Ajouter un truc"
         
@@ -66,10 +48,6 @@ class AddItemViewController: UIViewController {
         self.nameTextField.text = ""
         self.descriptionTextField.text = ""
         self.yearTextField.text = ""
-        self.authorsPickerView.delegate = self
-        self.authorsPickerView.dataSource = self
-        self.genresPickerView.delegate = self
-        self.genresPickerView.dataSource = self
         self.pictureImageView.image = #imageLiteral(resourceName: "movie")
         self.pictureImageView.contentMode = .center
         
@@ -77,6 +55,15 @@ class AddItemViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
         self.pictureImageView.addGestureRecognizer(tapGesture)
         self.pictureImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func viewSwipped(gesture: UIGestureRecognizer) {
+        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AddMovieGenreViewController")
+        if let nav = self.navigationController {
+            nav.pushViewController(destination, animated: true)
+            //nav.present(destination, animated: true, completion: nil)
+            print("swiped!")
+        }
     }
     
     @objc func imageTapped(gesture: UIGestureRecognizer) {
@@ -114,32 +101,6 @@ class AddItemViewController: UIViewController {
     }
     */
 
-}
-
-extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var count = 0
-        if pickerView == self.authorsPickerView {
-            count = self.authors.count
-        } else if pickerView == self.genresPickerView {
-            count = self.genres.count
-        }
-        return count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var name = ""
-        if pickerView == self.authorsPickerView {
-            name = self.authors[row].name
-        } else if pickerView == self.genresPickerView {
-            name = self.genres[row].rawValue
-        }
-        return name
-    }
 }
 
 extension AddItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
