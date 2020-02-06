@@ -38,6 +38,13 @@ class AddItemViewController: UIViewController {
     }
     var authors = [Author]()
     
+    fileprivate func displayImagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +72,17 @@ class AddItemViewController: UIViewController {
         self.genresPickerView.dataSource = self
         self.pictureImageView.image = #imageLiteral(resourceName: "movie")
         self.pictureImageView.contentMode = .center
+        
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
+        self.pictureImageView.addGestureRecognizer(tapGesture)
+        self.pictureImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            displayImagePicker()
+        }
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -77,6 +95,9 @@ class AddItemViewController: UIViewController {
             if let description = self.descriptionTextField.text, let date = self.yearTextField.text {
                 movie.description = description
                 movie.year = Int(date)
+            }
+            if let image = self.pictureImageView.image {
+                movie.picture = image
             }
             self.delegate?.itemAdditionFinished(item: movie)
         }
@@ -118,5 +139,16 @@ extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             name = self.genres[row].rawValue
         }
         return name
+    }
+}
+
+extension AddItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.pictureImageView.contentMode = .scaleAspectFit
+            self.pictureImageView.image = pickedImage
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
     }
 }
