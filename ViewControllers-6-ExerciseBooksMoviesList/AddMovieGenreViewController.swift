@@ -49,8 +49,15 @@ class AddMovieGenreViewController: UIViewController {
         self.genresPickerView.delegate = self
         self.genresPickerView.dataSource = self
         
+        let swiper = UISwipeGestureRecognizer(target: self, action: #selector(viewSwipped(gesture:)))
+        swiper.direction = .right
+        self.view.addGestureRecognizer(swiper)
+        
     }
     
+    @objc func viewSwipped(gesture: UIGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation
