@@ -135,8 +135,8 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = self.genresCollectionView.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
         cell.setupCell(genre: self.genres[indexPath.row])
         if self.genres[indexPath.row] == Genres.A {
-            cell.backgroundColor = .lightGray
-            cell.isSelected = true
+            self.genresCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
+            cell.activateCell()
         }
         return cell
     }
@@ -158,16 +158,23 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             self.resetDisplayedMovies()
         }
         self.movieTableView.reloadData()
+        self.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let genre = self.genres[indexPath.row]
         filterMovies(genre)
-        self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .lightGray
+        self.getCell(indexPath)?.activateCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("deselected")
-        self.genresCollectionView.cellForItem(at: indexPath)?.backgroundColor = .clear
+        self.getCell(indexPath)?.resetCell()
+    }
+    
+    fileprivate func getCell(_ indexPath: IndexPath) -> GenreCollectionViewCell? {
+        if let cell = self.genresCollectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell {
+            return cell
+        }
+        return nil
     }
 }

@@ -18,10 +18,18 @@ class GenreCollectionViewCell: UICollectionViewCell {
     }
 
     func setupCell(genre: Genres) {
-        self.backgroundColor = .white
+        self.resetCell()
         self.genreLabel.text = genre.rawValue
         self.genreLabel.textAlignment = .center
         self.genreLabel.textColor = .purple
+    }
+    
+    func activateCell() {
+        self.backgroundColor = .lightGray
+    }
+    
+    func resetCell() {
+        self.backgroundColor = .white
     }
     
 }
