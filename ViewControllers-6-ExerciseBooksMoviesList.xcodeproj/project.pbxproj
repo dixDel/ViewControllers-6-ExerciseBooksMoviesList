@@ -20,6 +20,7 @@
 		F9553A7323EAA76A003CF10D /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9553A7123EAA76A003CF10D /* GenreCollectionViewCell.xib */; };
 		F9553A7523EADCEF003CF10D /* FakeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9553A7423EADCEF003CF10D /* FakeDatabase.swift */; };
 		F9589A5E23EC01E600F7A70B /* AddMovieGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9589A5D23EC01E600F7A70B /* AddMovieGenreViewController.swift */; };
+		F9589A6023EC6BB400F7A70B /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9589A5F23EC6BB400F7A70B /* ItemViewController.swift */; };
 		F9B159B923E971F60083FD68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B159B823E971F60083FD68 /* AppDelegate.swift */; };
 		F9B159BB23E971F60083FD68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B159BA23E971F60083FD68 /* SceneDelegate.swift */; };
 		F9B159BD23E971F60083FD68 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B159BC23E971F60083FD68 /* MoviesViewController.swift */; };
@@ -44,6 +45,7 @@
 		F9553A7123EAA76A003CF10D /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
 		F9553A7423EADCEF003CF10D /* FakeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDatabase.swift; sourceTree = "<group>"; };
 		F9589A5D23EC01E600F7A70B /* AddMovieGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieGenreViewController.swift; sourceTree = "<group>"; };
+		F9589A5F23EC6BB400F7A70B /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		F9B159B523E971F60083FD68 /* ViewControllers-6-ExerciseBooksMoviesList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViewControllers-6-ExerciseBooksMoviesList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B159B823E971F60083FD68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9B159BA23E971F60083FD68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				F9553A7123EAA76A003CF10D /* GenreCollectionViewCell.xib */,
 				F9553A7423EADCEF003CF10D /* FakeDatabase.swift */,
 				F9589A5D23EC01E600F7A70B /* AddMovieGenreViewController.swift */,
+				F9589A5F23EC6BB400F7A70B /* ItemViewController.swift */,
 			);
 			path = "ViewControllers-6-ExerciseBooksMoviesList";
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				F94A229723E9C07C00C9EB13 /* ItemDetailsViewController.swift in Sources */,
 				F94A228723E98AF000C9EB13 /* Movie.swift in Sources */,
 				F94A228923E9A6FB00C9EB13 /* BooksViewController.swift in Sources */,
+				F9589A6023EC6BB400F7A70B /* ItemViewController.swift in Sources */,
 				F94A229323E9ADE400C9EB13 /* AddItemViewController.swift in Sources */,
 				F9589A5E23EC01E600F7A70B /* AddMovieGenreViewController.swift in Sources */,
 			);
