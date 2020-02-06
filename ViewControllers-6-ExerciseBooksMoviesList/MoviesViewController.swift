@@ -83,7 +83,8 @@ class MoviesViewController: UIViewController, AddItemDelegate {
     func itemAdditionFinished(item: Item) {
         let movie = item as! Movie
         self.movies.append(movie)
-        self.movieTableView.insertRows(at: [IndexPath(row: self.movies.count, section: 0)], with: .automatic)
+        self.resetDisplayedMovies()
+        self.movieTableView.insertRows(at: [IndexPath(row: self.movies.count - 1, section: 0)], with: .automatic)
     }
     
 }

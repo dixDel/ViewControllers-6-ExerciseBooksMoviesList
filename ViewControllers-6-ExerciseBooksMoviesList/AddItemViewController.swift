@@ -40,10 +40,9 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.authors = database.authors.sorted { (a1, a2) -> Bool in
-            print(a1.name)
             if a1.name.isEmpty {
                 return true
             } else {
@@ -104,7 +103,7 @@ extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         var count = 0
         if pickerView == self.authorsPickerView {
-            count = database.authors.count
+            count = self.authors.count
         } else if pickerView == self.genresPickerView {
             count = self.genres.count
         }
@@ -114,7 +113,7 @@ extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var name = ""
         if pickerView == self.authorsPickerView {
-            name = database.authors[row].name
+            name = self.authors[row].name
         } else if pickerView == self.genresPickerView {
             name = self.genres[row].rawValue
         }

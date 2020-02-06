@@ -236,7 +236,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inz-w2-z5O">
-                                <rect key="frame" x="20" y="64" width="125" height="21"/>
+                                <rect key="frame" x="20" y="108" width="125" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="uih-Go-H3s"/>
                                 </constraints>
@@ -257,13 +257,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="authors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-At-X3U">
-                                <rect key="frame" x="20" y="277" width="125" height="21"/>
+                                <rect key="frame" x="20" y="321" width="125" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QqM-3B-Q5t">
-                                <rect key="frame" x="20" y="419" width="374" height="200"/>
+                                <rect key="frame" x="20" y="463" width="374" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="16P-0f-Ila"/>
                                 </constraints>
@@ -285,19 +285,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAc-aS-xDQ">
-                                <rect key="frame" x="160" y="247" width="234" height="80"/>
+                                <rect key="frame" x="160" y="291.5" width="234" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="rkC-0X-Dpw"/>
                                 </constraints>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMF-Xp-cBM">
-                                <rect key="frame" x="160" y="318" width="234" height="80"/>
+                                <rect key="frame" x="160" y="362.5" width="234" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="aoK-Ux-1qR"/>
                                 </constraints>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kr2-Bb-q61">
-                                <rect key="frame" x="160" y="64" width="234" height="34"/>
+                                <rect key="frame" x="160" y="108" width="234" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -343,6 +343,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iI1-g1-gdF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Cbq-Nz-9f3"/>
                     <connections>
                         <outlet property="authorsPickerView" destination="yAc-aS-xDQ" id="tKy-at-cP0"/>
                         <outlet property="cancelButton" destination="tZm-5S-oOf" id="crD-fT-eTC"/>
@@ -356,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsQ-Eq-rMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469.5652173913045" y="-2091.2946428571427"/>
+            <point key="canvasLocation" x="2379.7101449275365" y="-2091.2946428571427"/>
         </scene>
         <!--Films-->
         <scene sceneID="di4-ed-IXd">
@@ -414,6 +415,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeG-s9-HCe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-565.21739130434787" y="126.5625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OjW-2j-yCp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bhb-AC-x2i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qKz-uA-7CJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y8U-Ry-qVr" kind="relationship" relationship="rootViewController" id="faD-ty-EEX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgT-pE-p9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1469.5652173913045" y="-2091.2946428571427"/>
         </scene>
     </scenes>
     <resources>
