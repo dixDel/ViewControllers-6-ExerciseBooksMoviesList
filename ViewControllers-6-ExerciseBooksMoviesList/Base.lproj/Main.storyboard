@@ -288,9 +288,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.left.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qnl-UH-JO1">
+                                <rect key="frame" x="364" y="688.5" width="50" height="47.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XzD-oH-alo"/>
+                                    <constraint firstAttribute="width" constant="50" id="gsy-SG-ELE"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qnl-UH-JO1" firstAttribute="top" secondItem="QqM-3B-Q5t" secondAttribute="bottom" constant="50" id="2Kp-B2-aBo"/>
                             <constraint firstItem="xEi-tE-aKb" firstAttribute="trailing" secondItem="Inz-w2-z5O" secondAttribute="trailing" id="7gf-C3-omA"/>
                             <constraint firstItem="JSO-8o-Ys1" firstAttribute="trailing" secondItem="Kr2-Bb-q61" secondAttribute="trailing" id="8HO-HF-Bzb"/>
                             <constraint firstItem="ynn-R7-QGr" firstAttribute="centerY" secondItem="gnD-uN-pBh" secondAttribute="centerY" id="DU3-UD-Cqz"/>
@@ -307,6 +315,7 @@
                             <constraint firstItem="ynn-R7-QGr" firstAttribute="trailing" secondItem="Kr2-Bb-q61" secondAttribute="trailing" id="RdN-n5-EQQ"/>
                             <constraint firstItem="xEi-tE-aKb" firstAttribute="top" secondItem="Inz-w2-z5O" secondAttribute="bottom" constant="50" id="S7H-V5-IBa"/>
                             <constraint firstItem="tZm-5S-oOf" firstAttribute="centerX" secondItem="sDf-cc-Usg" secondAttribute="centerX" constant="100" id="SsV-9D-idU"/>
+                            <constraint firstItem="qnl-UH-JO1" firstAttribute="trailing" secondItem="iI1-g1-gdF" secondAttribute="trailing" id="Ytm-17-QCE"/>
                             <constraint firstItem="Kr2-Bb-q61" firstAttribute="centerY" secondItem="Inz-w2-z5O" secondAttribute="centerY" id="bvD-qf-KRe"/>
                             <constraint firstItem="QqM-3B-Q5t" firstAttribute="trailing" secondItem="Kr2-Bb-q61" secondAttribute="trailing" id="jBc-0w-Fhl"/>
                             <constraint firstItem="Kr2-Bb-q61" firstAttribute="leading" secondItem="Inz-w2-z5O" secondAttribute="trailing" constant="15" id="mXQ-wv-xYT"/>
@@ -329,6 +338,7 @@
                         <outlet property="nameTextField" destination="Kr2-Bb-q61" id="Q2a-ym-lgi"/>
                         <outlet property="pictureImageView" destination="QqM-3B-Q5t" id="qiq-SH-QYb"/>
                         <outlet property="saveButton" destination="aZ8-Dk-K0L" id="Mkf-QC-QiW"/>
+                        <outlet property="swipeImageView" destination="qnl-UH-JO1" id="chM-6u-6Fz"/>
                         <outlet property="yearLabel" destination="gnD-uN-pBh" id="kXW-hJ-U26"/>
                         <outlet property="yearTextField" destination="ynn-R7-QGr" id="LAZ-Om-Kdi"/>
                     </connections>
@@ -475,6 +485,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left.2" catalog="system" width="64" height="42"/>
         <image name="author" width="32" height="32"/>
         <image name="book" width="32" height="32"/>
         <image name="movie" width="32" height="32"/>

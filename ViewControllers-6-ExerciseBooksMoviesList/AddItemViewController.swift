@@ -24,6 +24,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var pictureImageView: UIImageView!
+    @IBOutlet weak var swipeImageView: UIImageView!
     
     var delegate: AddItemDelegate?
     
@@ -61,8 +62,16 @@ class AddItemViewController: UIViewController {
         self.nameTextField.text = ""
         self.descriptionTextField.text = ""
         self.yearTextField.text = ""
+        self.yearTextField.keyboardType = .numberPad
         self.pictureImageView.image = #imageLiteral(resourceName: "movie")
         self.pictureImageView.contentMode = .center
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2.0, delay: 0.0, options: [.repeat], animations: {
+            UIView.setAnimationRepeatCount(100);
+            self.swipeImageView.alpha = 0.0
+        }, completion: { (pos) in
+            self.swipeImageView.alpha = 1.0
+        })
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
