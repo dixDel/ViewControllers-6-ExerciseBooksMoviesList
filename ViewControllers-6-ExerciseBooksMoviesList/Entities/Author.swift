@@ -13,6 +13,7 @@ class Author: Item {
     var name: String
     var authors: [Author]? = nil
     var picture: UIImage?
+    var genres: [Genres]? = nil
     
     init(name: String, picture: UIImage? = nil) {
         self.name = name

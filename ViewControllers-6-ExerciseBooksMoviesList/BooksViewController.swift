@@ -36,7 +36,10 @@ class BooksViewController: ItemViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print("appeared")
+        super.items = self.books
+        super.displayedItems = self.displayedBooks
         super.genresCollectionViewOutlet = self.genresCollectionView
+        super.itemsTableViewOutlet = self.booksTableView
         super.viewDidAppear(animated)
         //self.genresCollectionView = super.genresCollectionViewOutlet
         //self.genresCollectionView.reloadData()

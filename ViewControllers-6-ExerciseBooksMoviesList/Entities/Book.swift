@@ -14,10 +14,12 @@ class Book: Item {
     var name: String
     var authors: [Author]?
     var picture: UIImage?
+    var genres: [Genres]?
     
-    init(title: String, picture: UIImage? = nil, authors: [Author]? = nil) {
+    init(title: String, picture: UIImage? = nil, authors: [Author]? = nil, genres: [Genres]? = nil) {
         self.name = title
         self.picture = picture
         self.authors = authors
+        self.genres = genres
     }
 }

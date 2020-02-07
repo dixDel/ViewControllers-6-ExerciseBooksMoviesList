@@ -54,7 +54,7 @@ class FakeDatabase {
     init() {
         self.books.append(contentsOf: [
             Book(title: "Fondation", picture: #imageLiteral(resourceName: "Fondation-Asimov"), authors: [self.authors[0]]),
-            Book(title: "Le Seigneur des anneaux", picture: #imageLiteral(resourceName: "seigneur anneaux"), authors: [self.authors[1]])
+            Book(title: "Le Seigneur des anneaux", picture: #imageLiteral(resourceName: "seigneur anneaux"), authors: [self.authors[1]], genres: [Genres.Fantasy])
         ])
     }
 }

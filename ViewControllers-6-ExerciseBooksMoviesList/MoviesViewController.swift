@@ -71,6 +71,9 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.items = self.movies
+        super.displayedItems = self.displayedMovies
+        super.itemsTableViewOutlet = self.movieTableView
         if hasNewMovie {
             let genre = self.genres[0]
             //filterMovies(genre)

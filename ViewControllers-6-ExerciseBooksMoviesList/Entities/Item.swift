@@ -13,4 +13,5 @@ protocol Item {
     var name: String { get set }
     var authors: [Author]? { get set } 
     var picture: UIImage? { get set }
+    var genres: [Genres]? { get set }
 }

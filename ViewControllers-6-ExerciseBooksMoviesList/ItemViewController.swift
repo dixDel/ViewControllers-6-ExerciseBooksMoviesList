@@ -12,6 +12,10 @@ class ItemViewController: UIViewController {
     
     //@IBOutlet weak var genresCollectionView: UICollectionView!
     weak var genresCollectionViewOutlet: UICollectionView!
+    weak var itemsTableViewOutlet: UITableView!
+    
+    var items: [Item]!
+    var displayedItems: [Item]!
     
     let genres = Genres.allCases
         .filter({ (genre) -> Bool in
@@ -63,8 +67,6 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.genresCollectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
-        
-        print(cell)
         cell.setupCell(genre: self.genres[indexPath.row])
         if self.genres[indexPath.row] == Genres.A {
             self.genresCollectionViewOutlet.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
@@ -79,19 +81,20 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     fileprivate func filterItems(_ genre: Genres) {
         print(genre)
-        /*if genre != Genres.A {
-            self.displayedMovies = self.movies.filter { (movie) -> Bool in
+        if genre != Genres.A {
+            self.displayedItems = self.items.filter { (item) -> Bool in
                 var isMatch = false
-                if let movieGenre = movie.genres {
-                    isMatch = movieGenre.contains(genre)
+                if let itemGenre = item.genres {
+                    isMatch = itemGenre.contains(genre)
                 }
                 return isMatch
             }
         } else {
-            self.resetDisplayedMovies()
+            //self.resetDisplayedMovies()
         }
-        self.movieTableView.reloadData()
-        self.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)*/
+        self.itemsTableViewOutlet.reloadData()
+        print(self.displayedItems.count)
+        //self.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
