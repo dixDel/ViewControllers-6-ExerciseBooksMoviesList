@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="98D-um-wyf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="98D-um-wyf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,15 +48,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ro9-EA-liQ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K9g-Z0-Yjq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MPY-TA-WXP"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="edB-oh-a1R">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="r0b-ta-qeo">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ALO-hR-RbP">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="K9g-Z0-Yjq" firstAttribute="leading" secondItem="Ea4-g4-gJY" secondAttribute="leading" id="1TA-BM-MWA"/>
+                            <constraint firstItem="K9g-Z0-Yjq" firstAttribute="trailing" secondItem="Ea4-g4-gJY" secondAttribute="trailing" id="96m-gv-Hqb"/>
                             <constraint firstItem="ro9-EA-liQ" firstAttribute="leading" secondItem="Ea4-g4-gJY" secondAttribute="leading" id="AQk-TO-gTI"/>
                             <constraint firstItem="Ea4-g4-gJY" firstAttribute="trailing" secondItem="ro9-EA-liQ" secondAttribute="trailing" id="BK4-zN-3dz"/>
-                            <constraint firstItem="ro9-EA-liQ" firstAttribute="top" secondItem="Ea4-g4-gJY" secondAttribute="top" id="EHB-Al-3g3"/>
+                            <constraint firstItem="ro9-EA-liQ" firstAttribute="top" secondItem="Ea4-g4-gJY" secondAttribute="top" constant="50" id="EHB-Al-3g3"/>
+                            <constraint firstItem="K9g-Z0-Yjq" firstAttribute="top" secondItem="Ea4-g4-gJY" secondAttribute="top" id="Pya-Kb-px3"/>
                             <constraint firstItem="Ea4-g4-gJY" firstAttribute="bottom" secondItem="ro9-EA-liQ" secondAttribute="bottom" id="j5g-gf-OhJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ea4-g4-gJY"/>
@@ -64,6 +90,7 @@
                     <navigationItem key="navigationItem" id="XfW-yL-lEb"/>
                     <connections>
                         <outlet property="booksTableView" destination="ro9-EA-liQ" id="ZO7-sH-LR2"/>
+                        <outlet property="genresCollectionView" destination="K9g-Z0-Yjq" id="cd8-ES-MGi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJO-Oo-mO2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

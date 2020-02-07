@@ -8,13 +8,11 @@
 
 import UIKit
 
-class BooksViewController: UIViewController {
+class BooksViewController: ItemViewController {
     @IBOutlet weak var booksTableView: UITableView!
+    @IBOutlet weak var genresCollectionView: UICollectionView!
     
-    private let books = [
-        Book(title: "Très bon livre", picture: #imageLiteral(resourceName: "Fondation-Asimov"), authors: [Author(name: "Didier Delhaie")]),
-        Book(title: "Le Seigneur des anneaux", picture: #imageLiteral(resourceName: "seigneur anneaux"), authors: [Author(name: "J.R.R. Tolkien")])
-    ]
+    private var books = FakeDatabase().books
     
     private var displayedBooks = [Book]()
     
@@ -27,12 +25,24 @@ class BooksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("loaded")
         
         self.navigationItem.title = "Livres"
         
         resetDisplayedBooks()
         
         setupTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("appeared")
+        super.genresCollectionViewOutlet = self.genresCollectionView
+        super.viewDidAppear(animated)
+        //self.genresCollectionView = super.genresCollectionViewOutlet
+        //self.genresCollectionView.reloadData()
+        //self.genresCollectionView.reloadInputViews()
+        //super.genresCollectionViewOutlet = self.genresCollectionView
+        //super.genresCollectionViewOutlet.reloadData()
     }
     
     func setupTableView() {

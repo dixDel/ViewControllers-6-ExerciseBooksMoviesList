@@ -10,6 +10,9 @@ import UIKit
 
 class ItemViewController: UIViewController {
     
+    //@IBOutlet weak var genresCollectionView: UICollectionView!
+    weak var genresCollectionViewOutlet: UICollectionView!
+    
     let genres = Genres.allCases
         .filter({ (genre) -> Bool in
             genre != Genres.NIL
@@ -28,6 +31,18 @@ class ItemViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.setupCollectionView()
+    }
+    
+    func setupCollectionView() {
+        self.genresCollectionViewOutlet.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCell")
+        self.genresCollectionViewOutlet.dataSource = self
+        self.genresCollectionViewOutlet.delegate = self
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.genresCollectionViewOutlet.collectionViewLayout = layout
+    }
 
     /*
     // MARK: - Navigation
@@ -39,4 +54,60 @@ class ItemViewController: UIViewController {
     }
     */
 
+}
+
+extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.genres.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.genresCollectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
+        
+        print(cell)
+        cell.setupCell(genre: self.genres[indexPath.row])
+        if self.genres[indexPath.row] == Genres.A {
+            self.genresCollectionViewOutlet.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
+            cell.activateCell()
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 50)
+    }
+    
+    fileprivate func filterItems(_ genre: Genres) {
+        print(genre)
+        /*if genre != Genres.A {
+            self.displayedMovies = self.movies.filter { (movie) -> Bool in
+                var isMatch = false
+                if let movieGenre = movie.genres {
+                    isMatch = movieGenre.contains(genre)
+                }
+                return isMatch
+            }
+        } else {
+            self.resetDisplayedMovies()
+        }
+        self.movieTableView.reloadData()
+        self.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)*/
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let genre = self.genres[indexPath.row]
+        filterItems(genre)
+        self.getCell(indexPath)?.activateCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        self.getCell(indexPath)?.resetCell()
+    }
+    
+    fileprivate func getCell(_ indexPath: IndexPath) -> GenreCollectionViewCell? {
+        if let cell = self.genresCollectionViewOutlet.cellForItem(at: indexPath) as? GenreCollectionViewCell {
+            return cell
+        }
+        return nil
+    }
 }
