@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F94A228723E98AF000C9EB13 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A228623E98AF000C9EB13 /* Movie.swift */; };
 		F94A228923E9A6FB00C9EB13 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A228823E9A6FB00C9EB13 /* BooksViewController.swift */; };
-		F94A228B23E9A78400C9EB13 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A228A23E9A78400C9EB13 /* ItemsViewController.swift */; };
 		F94A228D23E9A90E00C9EB13 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A228C23E9A90E00C9EB13 /* Book.swift */; };
 		F94A228F23E9A9B400C9EB13 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A228E23E9A9B400C9EB13 /* Item.swift */; };
 		F94A229123E9AC6D00C9EB13 /* AuthorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94A229023E9AC6D00C9EB13 /* AuthorsViewController.swift */; };
@@ -27,14 +26,13 @@
 		F9B159C023E971F60083FD68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B159BE23E971F60083FD68 /* Main.storyboard */; };
 		F9B159C223E971F60083FD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9B159C123E971F60083FD68 /* Assets.xcassets */; };
 		F9B159C523E971F60083FD68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B159C323E971F60083FD68 /* LaunchScreen.storyboard */; };
-		F9B159CE23E988820083FD68 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B159CC23E988820083FD68 /* MovieTableViewCell.swift */; };
-		F9B159CF23E988820083FD68 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B159CD23E988820083FD68 /* MovieTableViewCell.xib */; };
+		F9B159CE23E988820083FD68 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B159CC23E988820083FD68 /* ItemTableViewCell.swift */; };
+		F9B159CF23E988820083FD68 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9B159CD23E988820083FD68 /* ItemTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F94A228623E98AF000C9EB13 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F94A228823E9A6FB00C9EB13 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
-		F94A228A23E9A78400C9EB13 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		F94A228C23E9A90E00C9EB13 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		F94A228E23E9A9B400C9EB13 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F94A229023E9AC6D00C9EB13 /* AuthorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +52,8 @@
 		F9B159C123E971F60083FD68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9B159C423E971F60083FD68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9B159C623E971F60083FD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F9B159CC23E988820083FD68 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
-		F9B159CD23E988820083FD68 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		F9B159CC23E988820083FD68 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		F9B159CD23E988820083FD68 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +67,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BD8AF6B23EDF04000DEBC66 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F94A229223E9ADE400C9EB13 /* AddItemViewController.swift */,
+				F9589A5D23EC01E600F7A70B /* AddMovieGenreViewController.swift */,
+				F94A229023E9AC6D00C9EB13 /* AuthorsViewController.swift */,
+				F94A228823E9A6FB00C9EB13 /* BooksViewController.swift */,
+				F94A229623E9C07C00C9EB13 /* ItemDetailsViewController.swift */,
+				F9589A5F23EC6BB400F7A70B /* ItemViewController.swift */,
+				F9B159BC23E971F60083FD68 /* MoviesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F94A229823E9C51200C9EB13 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,26 +111,19 @@
 		F9B159B723E971F60083FD68 /* ViewControllers-6-ExerciseBooksMoviesList */ = {
 			isa = PBXGroup;
 			children = (
-				F94A229823E9C51200C9EB13 /* Entities */,
+				5BD8AF6B23EDF04000DEBC66 /* ViewControllers */,
 				F9B159B823E971F60083FD68 /* AppDelegate.swift */,
-				F9B159BA23E971F60083FD68 /* SceneDelegate.swift */,
-				F9B159BC23E971F60083FD68 /* MoviesViewController.swift */,
-				F9B159BE23E971F60083FD68 /* Main.storyboard */,
 				F9B159C123E971F60083FD68 /* Assets.xcassets */,
-				F9B159C323E971F60083FD68 /* LaunchScreen.storyboard */,
-				F9B159C623E971F60083FD68 /* Info.plist */,
-				F9B159CC23E988820083FD68 /* MovieTableViewCell.swift */,
-				F9B159CD23E988820083FD68 /* MovieTableViewCell.xib */,
-				F94A228823E9A6FB00C9EB13 /* BooksViewController.swift */,
-				F94A228A23E9A78400C9EB13 /* ItemsViewController.swift */,
-				F94A229023E9AC6D00C9EB13 /* AuthorsViewController.swift */,
-				F94A229223E9ADE400C9EB13 /* AddItemViewController.swift */,
-				F94A229623E9C07C00C9EB13 /* ItemDetailsViewController.swift */,
+				F94A229823E9C51200C9EB13 /* Entities */,
+				F9553A7423EADCEF003CF10D /* FakeDatabase.swift */,
 				F9553A7023EAA76A003CF10D /* GenreCollectionViewCell.swift */,
 				F9553A7123EAA76A003CF10D /* GenreCollectionViewCell.xib */,
-				F9553A7423EADCEF003CF10D /* FakeDatabase.swift */,
-				F9589A5D23EC01E600F7A70B /* AddMovieGenreViewController.swift */,
-				F9589A5F23EC6BB400F7A70B /* ItemViewController.swift */,
+				F9B159C623E971F60083FD68 /* Info.plist */,
+				F9B159CC23E988820083FD68 /* ItemTableViewCell.swift */,
+				F9B159CD23E988820083FD68 /* ItemTableViewCell.xib */,
+				F9B159C323E971F60083FD68 /* LaunchScreen.storyboard */,
+				F9B159BE23E971F60083FD68 /* Main.storyboard */,
+				F9B159BA23E971F60083FD68 /* SceneDelegate.swift */,
 			);
 			path = "ViewControllers-6-ExerciseBooksMoviesList";
 			sourceTree = "<group>";
@@ -184,7 +189,7 @@
 				F9B159C523E971F60083FD68 /* LaunchScreen.storyboard in Resources */,
 				F9B159C223E971F60083FD68 /* Assets.xcassets in Resources */,
 				F9553A7323EAA76A003CF10D /* GenreCollectionViewCell.xib in Resources */,
-				F9B159CF23E988820083FD68 /* MovieTableViewCell.xib in Resources */,
+				F9B159CF23E988820083FD68 /* ItemTableViewCell.xib in Resources */,
 				F9B159C023E971F60083FD68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,11 +207,10 @@
 				F94A228F23E9A9B400C9EB13 /* Item.swift in Sources */,
 				F9B159BD23E971F60083FD68 /* MoviesViewController.swift in Sources */,
 				F9B159B923E971F60083FD68 /* AppDelegate.swift in Sources */,
-				F9B159CE23E988820083FD68 /* MovieTableViewCell.swift in Sources */,
+				F9B159CE23E988820083FD68 /* ItemTableViewCell.swift in Sources */,
 				F94A229123E9AC6D00C9EB13 /* AuthorsViewController.swift in Sources */,
 				F9B159BB23E971F60083FD68 /* SceneDelegate.swift in Sources */,
 				F9553A7523EADCEF003CF10D /* FakeDatabase.swift in Sources */,
-				F94A228B23E9A78400C9EB13 /* ItemsViewController.swift in Sources */,
 				F94A229723E9C07C00C9EB13 /* ItemDetailsViewController.swift in Sources */,
 				F94A228723E98AF000C9EB13 /* Movie.swift in Sources */,
 				F94A228923E9A6FB00C9EB13 /* BooksViewController.swift in Sources */,

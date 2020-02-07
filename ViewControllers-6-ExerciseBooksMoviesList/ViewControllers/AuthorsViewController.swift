@@ -27,7 +27,7 @@ class AuthorsViewController: UIViewController {
     }
     
     func setupTableView() {
-        self.authorsTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+        self.authorsTableView.register(UINib(nibName: "ItemTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
         self.authorsTableView.delegate = self
         self.authorsTableView.dataSource = self
     }
@@ -46,7 +46,7 @@ extension AuthorsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.authorsTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+        let cell = self.authorsTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! ItemTableViewCell
         cell.isPair = indexPath.row % 2 == 0
         cell.setupCell(item: self.authors[indexPath.row])
         return cell

@@ -33,6 +33,8 @@ class ItemViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        resetDisplayedItems()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,16 +49,12 @@ class ItemViewController: UIViewController {
         layout.scrollDirection = .horizontal
         self.genresCollectionViewOutlet.collectionViewLayout = layout
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    fileprivate func resetDisplayedItems() {
+        self.displayedItems = self.items.sorted { (item1, item2) -> Bool in
+            item1.name < item2.name
+        }
     }
-    */
 
 }
 
@@ -90,11 +88,12 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return isMatch
             }
         } else {
-            //self.resetDisplayedMovies()
+            self.resetDisplayedItems()
         }
         self.itemsTableViewOutlet.reloadData()
-        print(self.displayedItems.count)
-        //self.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        if self.displayedItems.count > 0 {
+            self.itemsTableViewOutlet.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

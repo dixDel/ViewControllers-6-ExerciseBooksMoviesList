@@ -18,39 +18,25 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
     
     private var hasNewMovie: Bool = false
     
-    /*override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        super.genresCollectionViewOutlet = genresCollectionView
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        super.genresCollectionViewOutlet = genresCollectionView
-    }*/
-    
-    fileprivate func resetDisplayedMovies() {
-        self.displayedMovies = self.movies.sorted { (movie1, movie2) -> Bool in
-            movie1.name < movie2.name
-        }
-    }
-    
     override func viewDidLoad() {
+        super.genresCollectionViewOutlet = self.genresCollectionView
+        super.itemsTableViewOutlet = self.movieTableView
+        super.items = self.movies
+        super.displayedItems = self.displayedMovies
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        super.genresCollectionViewOutlet = self.genresCollectionView
+        
         self.navigationItem.title = "Films"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
         self.navigationItem.rightBarButtonItem = addButton
-        //print(self.value(forKey: "macle"))
-        
-        resetDisplayedMovies()
         
         setupTableView()
         setupCollectionView()
     }
 
     func setupTableView() {
-        self.movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
+        self.movieTableView.register(UINib(nibName: "ItemTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieCell")
         self.movieTableView.delegate = self
         self.movieTableView.dataSource = self
     }
@@ -85,13 +71,13 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
 
 extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.displayedMovies.count
+        return super.displayedItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.movieTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+        let cell = self.movieTableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! ItemTableViewCell
         cell.isPair = indexPath.row % 2 == 0
-        cell.setupCell(item: self.displayedMovies[indexPath.row])
+        cell.setupCell(item: super.displayedItems[indexPath.row])
         return cell
     }
     
@@ -99,12 +85,12 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         return 150
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destination = storyboard?.instantiateViewController(identifier: "ItemDetailsViewController") as? ItemDetailsViewController {
-            destination.item = self.displayedMovies[indexPath.row]
+            destination.item = super.displayedItems[indexPath.row]
             self.navigationController?.pushViewController(destination, animated: true)
         }
         self.movieTableView.deselectRow(at: indexPath, animated: true)
-    }
+    }*/
     
 }
