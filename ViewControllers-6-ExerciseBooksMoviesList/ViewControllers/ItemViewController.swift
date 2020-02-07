@@ -17,6 +17,8 @@ class ItemViewController: UIViewController {
     var items: [Item]!
     var displayedItems: [Item]!
     
+    var selectedGenre = Genres.A
+    
     let genres = Genres.allCases
         .filter({ (genre) -> Bool in
             genre != Genres.NIL
@@ -66,7 +68,7 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.genresCollectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
         cell.setupCell(genre: self.genres[indexPath.row])
-        if self.genres[indexPath.row] == Genres.A {
+        if self.genres[indexPath.row] == self.selectedGenre {
             self.genresCollectionViewOutlet.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
             cell.activateCell()
         }
@@ -100,6 +102,7 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let genre = self.genres[indexPath.row]
         filterItems(genre)
         self.getCell(indexPath)?.activateCell()
+        self.selectedGenre = genre
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
