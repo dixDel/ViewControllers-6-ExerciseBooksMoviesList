@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol CellStateDelegate {
+    func hasBeenActivated(cell: GenreCollectionViewCell)
+}
+
 class GenreCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var genreLabel: UILabel!
+    
+    var delegate: CellStateDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +32,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     func activateCell() {
         self.backgroundColor = .lightGray
+        self.delegate?.hasBeenActivated(cell: self)
     }
     
     func resetCell() {

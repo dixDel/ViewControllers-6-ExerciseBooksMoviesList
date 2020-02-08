@@ -16,11 +16,11 @@ class BooksViewController: ItemViewController {
     
     private var displayedBooks = [Book]()
     
+    private var selectedGenreIndex = IndexPath(row: 0, section: 0)
+    
     override func viewDidLoad() {
-        super.items = self.books
-        super.displayedItems = self.displayedBooks
-        super.genresCollectionViewOutlet = self.genresCollectionView
-        super.itemsTableViewOutlet = self.booksTableView
+        self.setupParent()
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -30,11 +30,21 @@ class BooksViewController: ItemViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.items = self.books
-        super.displayedItems = self.displayedBooks
+        self.setupParent()
+        
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.selectedGenreIndex = super.selectedIndex
+    }
+    
+    fileprivate func setupParent() {
         super.genresCollectionViewOutlet = self.genresCollectionView
         super.itemsTableViewOutlet = self.booksTableView
-        super.viewDidAppear(animated)
+        super.items = self.books
+        super.displayedItems = self.displayedBooks
+        super.selectedIndex = self.selectedGenreIndex
     }
     
     func setupTableView() {

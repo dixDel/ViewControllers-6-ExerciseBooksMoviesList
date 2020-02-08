@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemViewController: UIViewController {
+class ItemViewController: UIViewController, CellStateDelegate {
     
     //@IBOutlet weak var genresCollectionView: UICollectionView!
     weak var genresCollectionViewOutlet: UICollectionView!
@@ -17,7 +17,8 @@ class ItemViewController: UIViewController {
     var items: [Item]!
     var displayedItems: [Item]!
     
-    var selectedGenre = Genres.A
+    var selectedIndex = IndexPath(row: 0, section: 0)
+    var selectedCell: GenreCollectionViewCell?
     
     let genres = Genres.allCases
         .filter({ (genre) -> Bool in
@@ -57,7 +58,11 @@ class ItemViewController: UIViewController {
             item1.name < item2.name
         }
     }
-
+    
+    func hasBeenActivated(cell: GenreCollectionViewCell) {
+        self.selectedCell = cell
+    }
+    
 }
 
 extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -68,8 +73,11 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.genresCollectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
         cell.setupCell(genre: self.genres[indexPath.row])
-        if self.genres[indexPath.row] == self.selectedGenre {
-            self.genresCollectionViewOutlet.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
+        if self.selectedCell == nil {
+            self.selectedCell = cell
+        }
+        if self.selectedCell == cell {
+            //self.genresCollectionViewOutlet.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .top)
             cell.activateCell()
         }
         return cell
@@ -99,18 +107,29 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected cell is \(self.selectedCell)")
+        self.selectedCell?.resetCell()
+        //self.collectionView(self.genresCollectionViewOutlet, didDeselectItemAt: self.selectedIndex)
+        self.selectedIndex = indexPath
         let genre = self.genres[indexPath.row]
         filterItems(genre)
-        self.getCell(indexPath)?.activateCell()
-        self.selectedGenre = genre
+        self.selectedCell = self.getCell(indexPath)
+        self.selectedCell?.activateCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        self.getCell(indexPath)?.resetCell()
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+       // self.getCell(indexPath)?.resetCell()
     }
+    
+    /*func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("deselect \(self.selectedIndex)")
+        // scrolling then coming back without selecting another cell gives indexPath 0, 0
+        self.getCell(self.selectedIndex)?.resetCell()
+    }*/
     
     fileprivate func getCell(_ indexPath: IndexPath) -> GenreCollectionViewCell? {
         if let cell = self.genresCollectionViewOutlet.cellForItem(at: indexPath) as? GenreCollectionViewCell {
+            print("found cell")
             return cell
         }
         return nil
