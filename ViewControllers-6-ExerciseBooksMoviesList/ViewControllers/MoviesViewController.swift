@@ -16,9 +16,6 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
     private var movies = FakeDatabase().movies
     private var displayedMovies = [Movie]()
     
-    private var selectedGenreIndex = IndexPath(row: 0, section: 0)
-    private var selectedGenreCell: GenreCollectionViewCell?
-    
     private var hasNewMovie: Bool = false
     
     fileprivate func setupParent() {
@@ -26,9 +23,6 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
         super.itemsTableViewOutlet = self.movieTableView
         super.items = self.movies
         super.displayedItems = self.displayedMovies
-        if self.selectedGenreCell != nil {
-            super.selectedCell = self.selectedGenreCell
-        }
     }
     
     override func viewDidLoad() {
@@ -67,19 +61,12 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setupParent()
-        
         if hasNewMovie {
             let genre = self.genres[0]
             //filterMovies(genre)
             self.genresCollectionView.reloadData()
             hasNewMovie = false
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.selectedGenreIndex = super.selectedIndex
-        self.selectedGenreCell = super.selectedCell
     }
 }
 
