@@ -10,6 +10,7 @@ import UIKit
 
 protocol CellStateDelegate {
     func hasBeenActivated(cell: GenreCollectionViewCell)
+    func hasBeenDeactivated(cell: GenreCollectionViewCell)
 }
 
 class GenreCollectionViewCell: UICollectionViewCell {
@@ -37,6 +38,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     func resetCell() {
         self.backgroundColor = .white
+        self.delegate?.hasBeenDeactivated(cell: self)
     }
     
 }

@@ -62,6 +62,10 @@ class ItemViewController: UIViewController, CellStateDelegate {
         self.selectedCell = cell
     }
     
+    func hasBeenDeactivated(cell: GenreCollectionViewCell) {
+        self.selectedCell = nil
+    }
+    
 }
 
 extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -72,11 +76,9 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.genresCollectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
         cell.setupCell(genre: self.genres[indexPath.row])
-        if self.selectedCell == nil && self.genres[indexPath.row] == self.genres[0]
-            || self.selectedCell == cell {
+        if cell == self.selectedCell || self.selectedCell == nil && self.genres[indexPath.row] == self.genres[0] {
+            print("activated cell detected: \(cell)")
             cell.activateCell()
-            cell.isSelected = true
-            //self.collectionView(collectionView, didSelectItemAt: indexPath)
         }
         return cell
     }
@@ -86,7 +88,6 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     fileprivate func filterItems(_ genre: Genres) {
-        print(genre)
         if genre != Genres.A {
             self.displayedItems = self.items.filter { (item) -> Bool in
                 var isMatch = false
@@ -107,14 +108,15 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell
         cell.activateCell()
-        self.selectedCell = cell
+        print("SELECTED \(indexPath): \(cell)")
         filterItems(self.genres[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("DESELECTED \(indexPath)")
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell {
+            print("DESELECTED \(indexPath): \(cell)")
             cell.resetCell()
         }
+        self.selectedCell?.resetCell()
     }
 }
