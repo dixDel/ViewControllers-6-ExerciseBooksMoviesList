@@ -18,6 +18,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var genreLabel: UILabel!
     
     var delegate: CellStateDelegate?
+    var genre: Genres?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     }
 
     func setupCell(genre: Genres) {
+        self.genre = genre
         self.resetCell()
         self.genreLabel.text = genre.rawValue
         self.genreLabel.textAlignment = .center

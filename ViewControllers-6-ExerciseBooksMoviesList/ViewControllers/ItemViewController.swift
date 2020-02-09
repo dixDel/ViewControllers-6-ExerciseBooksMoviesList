@@ -17,8 +17,6 @@ class ItemViewController: UIViewController, CellStateDelegate {
     var items: [Item]!
     var displayedItems: [Item]!
     
-    var selectedCell: GenreCollectionViewCell?
-    
     let genres = Genres.allCases
         .filter({ (genre) -> Bool in
             genre != Genres.NIL
@@ -30,6 +28,8 @@ class ItemViewController: UIViewController, CellStateDelegate {
                 return genre1.rawValue < genre2.rawValue
             }
     }
+    
+    var selectedGenre: Genres?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +59,11 @@ class ItemViewController: UIViewController, CellStateDelegate {
     }
     
     func hasBeenActivated(cell: GenreCollectionViewCell) {
-        self.selectedCell = cell
+        self.selectedGenre = cell.genre
     }
     
     func hasBeenDeactivated(cell: GenreCollectionViewCell) {
-        self.selectedCell = nil
+        self.selectedGenre = nil
     }
     
 }
@@ -75,10 +75,12 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.genresCollectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
-        cell.setupCell(genre: self.genres[indexPath.row])
-        if cell == self.selectedCell || self.selectedCell == nil && self.genres[indexPath.row] == self.genres[0] {
-            print("activated cell detected: \(cell)")
+        let genre = self.genres[indexPath.row]
+        cell.setupCell(genre: genre)
+        if self.selectedGenre == genre ||
+            self.selectedGenre == nil && genre == Genres.A {
             cell.activateCell()
+            //self.collectionView(collectionView, didSelectItemAt: indexPath)
         }
         return cell
     }
@@ -105,18 +107,43 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell
-        cell.activateCell()
-        print("SELECTED \(indexPath): \(cell)")
-        filterItems(self.genres[indexPath.row])
+        if self.selectedGenre == nil {
+            self.collectionView(collectionView, didDeselectItemAt: IndexPath(row: 0, section: 0))
+        }
+        if let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell {
+            cell.activateCell()
+        }
+        let genre = self.genres[indexPath.row]
+        filterItems(genre)
+        self.selectedGenre = genre
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell {
-            print("DESELECTED \(indexPath): \(cell)")
             cell.resetCell()
         }
-        self.selectedCell?.resetCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell
+        cell.activateCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell
+        cell.resetCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
