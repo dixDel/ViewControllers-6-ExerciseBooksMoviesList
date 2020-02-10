@@ -38,6 +38,7 @@ class ItemViewController: UIViewController, CellStateDelegate {
         
         resetDisplayedItems()
         self.setupCollectionView()
+        self.setupTableView()
     }
     
     func setupCollectionView() {
@@ -48,6 +49,12 @@ class ItemViewController: UIViewController, CellStateDelegate {
         layout.scrollDirection = .horizontal
         self.genresCollectionViewOutlet.collectionViewLayout = layout
         self.genresCollectionViewOutlet.allowsMultipleSelection = false
+    }
+
+    func setupTableView() {
+        self.itemsTableViewOutlet.register(UINib(nibName: "ItemTableViewCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
+        self.itemsTableViewOutlet.delegate = self
+        self.itemsTableViewOutlet.dataSource = self
     }
     
     fileprivate func resetDisplayedItems() {
@@ -120,4 +127,30 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell
         cell?.resetCell()
     }
+}
+
+extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayedItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.itemsTableViewOutlet.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+        cell.isPair = indexPath.row % 2 == 0
+        cell.setupCell(item: displayedItems[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let destination = storyboard?.instantiateViewController(identifier: "ItemDetailsViewController") as? ItemDetailsViewController {
+            destination.item = displayedItems[indexPath.row]
+            self.navigationController?.pushViewController(destination, animated: true)
+        }
+        self.itemsTableViewOutlet.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
