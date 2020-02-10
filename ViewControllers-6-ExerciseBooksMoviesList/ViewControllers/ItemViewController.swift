@@ -78,7 +78,6 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if self.selectedGenre == genre ||
             self.selectedGenre == nil && genre == Genres.A {
             cell.activateCell()
-            //self.collectionView(collectionView, didSelectItemAt: indexPath)
         }
         return cell
     }

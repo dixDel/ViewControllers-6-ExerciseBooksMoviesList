@@ -86,12 +86,12 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         return 150
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destination = storyboard?.instantiateViewController(identifier: "ItemDetailsViewController") as? ItemDetailsViewController {
             destination.item = super.displayedItems[indexPath.row]
             self.navigationController?.pushViewController(destination, animated: true)
         }
         self.movieTableView.deselectRow(at: indexPath, animated: true)
-    }*/
+    }
     
 }
