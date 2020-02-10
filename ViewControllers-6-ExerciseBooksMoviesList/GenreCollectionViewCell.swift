@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol CellStateDelegate {
+    func hasBeenActivated(cell: GenreCollectionViewCell)
+    func hasBeenDeactivated(cell: GenreCollectionViewCell)
+}
+
 class GenreCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var genreLabel: UILabel!
+    
+    var delegate: CellStateDelegate?
+    var genre: Genres?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +26,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     }
 
     func setupCell(genre: Genres) {
+        self.genre = genre
         self.resetCell()
         self.genreLabel.text = genre.rawValue
         self.genreLabel.textAlignment = .center
@@ -26,10 +35,12 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     func activateCell() {
         self.backgroundColor = .lightGray
+        self.delegate?.hasBeenActivated(cell: self)
     }
     
     func resetCell() {
         self.backgroundColor = .white
+        self.delegate?.hasBeenDeactivated(cell: self)
     }
     
 }

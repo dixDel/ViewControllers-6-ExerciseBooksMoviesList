@@ -18,11 +18,15 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
     
     private var hasNewMovie: Bool = false
     
-    override func viewDidLoad() {
+    fileprivate func setupParent() {
         super.genresCollectionViewOutlet = self.genresCollectionView
         super.itemsTableViewOutlet = self.movieTableView
         super.items = self.movies
         super.displayedItems = self.displayedMovies
+    }
+    
+    override func viewDidLoad() {
+        setupParent()
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -57,9 +61,6 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.items = self.movies
-        super.displayedItems = self.displayedMovies
-        super.itemsTableViewOutlet = self.movieTableView
         if hasNewMovie {
             let genre = self.genres[0]
             //filterMovies(genre)

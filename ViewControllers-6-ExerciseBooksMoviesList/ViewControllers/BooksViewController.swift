@@ -17,10 +17,8 @@ class BooksViewController: ItemViewController {
     private var displayedBooks = [Book]()
     
     override func viewDidLoad() {
-        super.items = self.books
-        super.displayedItems = self.displayedBooks
-        super.genresCollectionViewOutlet = self.genresCollectionView
-        super.itemsTableViewOutlet = self.booksTableView
+        self.setupParent()
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -29,12 +27,11 @@ class BooksViewController: ItemViewController {
         setupTableView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.items = self.books
-        super.displayedItems = self.displayedBooks
+    fileprivate func setupParent() {
         super.genresCollectionViewOutlet = self.genresCollectionView
         super.itemsTableViewOutlet = self.booksTableView
-        super.viewDidAppear(animated)
+        super.items = self.books
+        super.displayedItems = self.displayedBooks
     }
     
     func setupTableView() {
