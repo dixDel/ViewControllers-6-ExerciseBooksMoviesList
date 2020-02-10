@@ -37,9 +37,6 @@ class ItemViewController: UIViewController, CellStateDelegate {
         // Do any additional setup after loading the view.
         
         resetDisplayedItems()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         self.setupCollectionView()
     }
     
@@ -50,6 +47,7 @@ class ItemViewController: UIViewController, CellStateDelegate {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         self.genresCollectionViewOutlet.collectionViewLayout = layout
+        self.genresCollectionViewOutlet.allowsMultipleSelection = false
     }
     
     fileprivate func resetDisplayedItems() {
@@ -107,43 +105,20 @@ extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.selectedGenre == nil {
             self.collectionView(collectionView, didDeselectItemAt: IndexPath(row: 0, section: 0))
         }
-        if let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell {
-            cell.activateCell()
-        }
+        let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell
+        cell?.activateCell()
         let genre = self.genres[indexPath.row]
         filterItems(genre)
         self.selectedGenre = genre
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell {
-            cell.resetCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell
-        cell.activateCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell
-        cell.resetCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        collectionView.reloadItems(at: [indexPath])
+        let cell = collectionView.cellForItem(at: indexPath) as? GenreCollectionViewCell
+        cell?.resetCell()
     }
 }
