@@ -29,20 +29,7 @@ class MoviesViewController: ItemViewController, AddItemDelegate {
         setupParent()
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        self.navigationItem.title = "Films"
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
-        self.navigationItem.rightBarButtonItem = addButton
-    }
-    
-    @objc func addMovie() {
-        if let navigationController = storyboard?.instantiateViewController(identifier: "AddMovieNavigationController") as? UINavigationController {
-            let controller = navigationController.viewControllers[0] as! AddItemViewController
-            controller.delegate = self
-            navigationController.modalPresentationStyle = .fullScreen
-            self.present(navigationController, animated: true, completion: nil)
-        }
+        super.createAddButton(title: "Films")
     }
     
     func itemAdditionFinished(item: Item) {

@@ -71,6 +71,23 @@ class ItemViewController: UIViewController, CellStateDelegate {
         self.selectedGenre = nil
     }
     
+    func createAddButton(title: String) {
+        // Do any additional setup after loading the view.
+        
+        self.navigationItem.title = title
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMovie))
+        self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    @objc func addMovie() {
+        if let navigationController = storyboard?.instantiateViewController(identifier: "AddMovieNavigationController") as? UINavigationController {
+            let controller = navigationController.viewControllers[0] as! AddItemViewController
+            controller.delegate = self as! AddItemDelegate
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension ItemViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
